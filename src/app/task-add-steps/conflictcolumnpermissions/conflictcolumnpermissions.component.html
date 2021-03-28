@@ -1,0 +1,50 @@
+																				<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section mvh dashborad-inner uploadpage">
+  	<div class="container">
+	    <div class="dashborad-panel">
+	        <app-businesssidemenu></app-businesssidemenu>
+	        <div class="dashborad-rightsider">
+	            <div id="content">
+                 
+                    <h1>We found {{total_rows}} rows</h1>
+                                                
+                    <h3 class="mt-16 mb-6 opacity-25 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/assigndatatype/'+task_id]"> <b>3.</b> Please assign data types to your columns</a> </h3>
+                    <h3 class="mt-3 mb-6 opacity-50 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/allocateteam/'+task_id]"> <b>4.</b> Allocate Teams </a> </h3>
+                    <h3 class="mt-3 mb-6 opacity-75 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/configurecolumnpermissions/'+task_id]"> <b>5.</b> Configure column permissions </a> </h3>
+                    <h3 class="mt-3 mb-6 commanlsittecxt"> <b>6.</b> Permission conflict management </h3>
+                    <p class="mb-8">Users can be assigned to one or more teams. In some cases you may have users as part of two or more teams with conflicting permissions. I.e. User 1 has READ ONLY to Column A as part of Team C Permissions but also has EDIT as part of being a member of Team B, please select which permission set the user should get in this instance</p>
+                    
+                    <form [formGroup]="conflictPermissionForm" (ngSubmit)="saveConflictPermission()" style="padding: 0;">
+	                    <div class="mdc-form-field">
+	                        <div class="md-radio">
+	                            <input id="most" value="most" type="radio" formControlName="permission_type"> 
+	                            <label class="text-gray-600" for="most">
+	                            <span class="inline-block"> Most restrictive permissions – The user will receive the most restrictive permission; i.e read only over edit
+	                            </span>
+	                            </label>
+	                        </div>
+	                        <div class="md-radio">
+	                            <input id="least" value="least" type="radio" formControlName="permission_type"> 
+	                            <label class="text-gray-600" for="least">
+	                            <span class="inline-block"> Least restrictive permissions – The user will receive the least restrictive permission; i.e. edit over read only
+	                            </span>
+	                            </label>
+	                        </div>
+	                    </div>
+
+	                    <div class="w-full d-sm-flex mt-16 blckbtn">
+	                     	<button class="bg-blue-800">Continue </button>
+	                    </div>
+	                </form>
+                </div>
+          	</div>
+	    </div>        
+  	</div>
+</div>

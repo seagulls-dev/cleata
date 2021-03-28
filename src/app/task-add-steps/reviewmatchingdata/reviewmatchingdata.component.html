@@ -1,0 +1,48 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section mvh dashborad-inner uploadpage">
+  	<div class="container">
+	    <div class="dashborad-panel">
+	        <app-businesssidemenu></app-businesssidemenu>
+	        <div class="dashborad-rightsider">
+	            <div id="content">
+                    <h1>We found {{total_rows}} rows</h1>
+                    <h3 class="mt-16 mb-6 opacity-25 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/reallocatetasks/'+task_id]"> <b>7.</b> Do you want to allow users to reallocate tasks? </a> </h3>
+                    <h3 class="mt-3 mb-6 opacity-50 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/wantconfigurebusinessrules/'+task_id]"> <b>8.</b>Do you want to configure business rules? </a> </h3>
+                    <h3 class="mt-3 mb-6 opacity-75 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/configurebusinessrules/'+task_id]"> <b>9.</b>Configure business rules </a> </h3>
+                    <h3 class="mt-3 mb-6 commanlsittecxt"> <b>10.</b> Review matching data </h3>
+                    <p class="mb-5">The summary of how many records are captured by your business rules are displayed below</p>
+                                                       
+                    <div class="w-1/2">
+                      	<div class="oversection shadow-sm rounded-lg">
+                      		<ng-container *ngFor="let rules_wise_matches of matchingdataanalytics?.rules_wise_matches;let i=index;">
+                      			<div class="d-sm-flex justify-content-between py-2" [ngClass]="{'border-b': matchingdataanalytics && matchingdataanalytics.rules_wise_matches.length < (i+1)}">
+		                        	<p class="text-gray-800">{{rules_wise_matches.rule_name}}</p>
+		                            <p class="text-gray-600 self-center text-sm">{{rules_wise_matches.total_match_rows}} records</p>
+		                        </div>
+                      		</ng-container>
+	                    	
+	                        
+	                        <div class="overinnersection shadow-sm rounded-lg">
+	                        	<div class="d-sm-flex justify-content-between py-1"><p class="text-blue-900">Total Matched</p><p class="text-gray-600 self-center text-sm">{{matchingdataanalytics?.total_match_rows}} records</p></div>
+	                            <div class="d-sm-flex justify-content-between py-1"><p class="text-blue-900">Total Number of Records</p><p class="text-gray-600 self-center text-sm">{{matchingdataanalytics?.total_Rows}} records</p></div>
+	                            <div class="d-sm-flex justify-content-between py-1"><p class="text-blue-900">Total Uncategorised</p><p class="text-gray-600 self-center text-sm">{{matchingdataanalytics?.tota_unmatch_rows}} records</p></div>
+	                        </div>
+                    	</div>
+
+	                    <div class="w-full d-sm-flex justify-content-between mt-16">
+	                       	<a [routerLink]="['/tasks/configurebusinessrules/'+task_id]" class="text-md bg-gray-300 rounded-md">Reconfigure rules </a>
+	                    	<a [routerLink]="" (click)="goToNext()" class="ml-3 bg-blue-800">Next </a>
+	                    </div>
+                    </div>
+                </div>
+          	</div>
+	    </div>        
+  	</div>
+</div>

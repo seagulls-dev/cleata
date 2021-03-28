@@ -1,0 +1,123 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section mvh dashborad-inner uploadpage">
+  	<div class="container">
+	      <div class="dashborad-panel">
+	        <app-businesssidemenu></app-businesssidemenu>
+	        <div class="dashborad-rightsider">
+            <div id="content">
+              <h1>Upload dataset</h1>
+              <p>Drag and drop your file below or click to select and upload your file from your computer, currently supported are files of type CSV, XLS and XLSX.</p>
+              <div class="dropzone mt-12 rounded-xl">
+                <input type="file" ng2FileSelect [uploader]="uploader" *ngIf="!uploader.isUploading">
+                <div class="block" *ngIf="!uploader.isUploading">
+                  <img src="assets/images/cloud-upload-alt-duotone.svg" alt="img">
+                  <h3>Drop files here or click to upload</h3>
+                </div>
+                <div class="progress-div" *ngIf="uploader.isUploading">
+                  <h3>Your file is uploading... please wait</h3>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                  </div>
+                </div>
+               </div>
+            </div>
+                <!-- <div class="edit-profile-set add-teamuserlist-page">
+                     <div class="list-top-attribute">
+                        <h3> Add task </h3>
+                        <div class="rightattributepanel">
+                        	
+                           <a [routerLink]="['/business-user/tasks']" class="btn blue-custom-btn backbtn"> <i class="fa fa-long-arrow-left"></i> Back </a>
+                        </div>
+                     </div>
+                     <div class="viewmanagercontent">
+                        <form [formGroup]="taskForm" (ngSubmit)="saveTask()">
+                          <div class="row">
+                          	<div class="col-lg-12">
+                            	<div class="addlableinformation">
+                                	<label class="custom-label">Title </label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control without-append-input" placeholder="Enter title" formControlName="title" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+                                        <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                                          <div *ngIf="f.title.errors.required">Title is required</div>
+                                          <div *ngIf="f.title.errors.maxlength">Title should be max {{f.title.errors.maxlength.requiredLength}} characters</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                            	<div class="addlableinformation">
+                                	<label class="custom-label">Description </label>
+                                    <div class="form-group">
+                                        <textarea type="text" class="form-control without-append-input" placeholder="Enter description" formControlName="description" [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></textarea>
+                                        <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                                          <div *ngIf="f.description.errors.required">Description is required</div>
+                                          <div *ngIf="f.description.errors.maxlength">Description should be max {{f.description.errors.maxlength.requiredLength}} characters</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                              <div class="addlableinformation">
+                                  <label class="custom-label">Task File </label>
+                                    <div class="form-group">
+                                        <div class="change-profile-photo" style="margin: 0;">
+                                            <input type="file" ng2FileSelect [uploader]="uploader">
+                                            <span> Add Task File </span>
+                                        </div>
+                                        <div *ngIf="submitted && f.profile_picture.errors" class="invalid-feedback" style="display: block;">
+                                          <div *ngIf="f.profile_picture.errors.required">Task file is required</div>
+                                        </div>
+                                        <div style="padding-top: 2%;">
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }">{{uploader.progress}} %</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                              <div class="form-group text-center">
+                                <div class="btn submit-btn">
+                                   <input type="submit" value="Add task"> 
+                                   <i class="fa fa-angle-right"></i>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                     </div>
+                </div> -->
+          </div>
+	      </div>        
+  	</div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="limitExceedModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Limit Exceed</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="limitExceedMessage"></div>
+      <div class="modal-footer popup-btns">
+        <button type="button" class="submit-btn cancel" data-dismiss="modal">Cancel</button>
+        <a [routerLink]="['/upgradeplan']" class="submit-btn">Upgrade</a>
+      </div>
+    </div>
+  </div>
+</div>

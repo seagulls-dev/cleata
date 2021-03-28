@@ -1,0 +1,116 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section object-comman object-comman-reverse after-login-section">
+    <div class="container">
+        <div class="dashborad-panel">
+          <app-businesssidemenu></app-businesssidemenu>
+
+          <div class="dashborad-rightsider">
+                             
+              <div class="edit-profile-set view-team-manager-page" *ngIf="teamUserData">
+                   <div class="list-top-attribute">
+                      <h3> View user </h3>
+                      <div class="rightattributepanel">
+                        
+                          <a [routerLink]="['/teamusers/edit/'+teamUserData.user._id]" class="btn blue-custom-btn"> + Edit user </a>
+                          <a [routerLink]="['/teamusers']" class="btn blue-custom-btn backbtn"> <i class="fa fa-long-arrow-left"></i> Back </a>
+                      </div>
+                   </div>
+                   
+                   <div class="viewmanagercontent">
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <div class="viewlableinformation">
+                                <label class="custom-label">First Name </label>
+                                  <span>{{teamUserData.user.first_name}}</span>
+                              </div>
+                          </div>
+
+                          <div class="col-lg-6">
+                            <div class="viewlableinformation">
+                                <label class="custom-label">Last Name </label>
+                                  <span>{{teamUserData.user.last_name}}</span>
+                              </div>
+                          </div>
+
+                          <div class="col-lg-6">
+                            <div class="viewlableinformation">
+                                <label class="custom-label">Email </label>
+                                  <span>{{teamUserData.user.email}}</span>
+                              </div>
+                          </div>
+
+                          <div class="col-lg-6">
+                            <div class="viewlableinformation">
+                                <label class="custom-label">Contact number </label>
+                                  <span>{{teamUserData.user.mobile || "-"}}</span>
+                              </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <div class="viewlableinformation">
+                                <label class="custom-label">Job title </label>
+                                  <span>{{teamUserData.user.job_title || "-"}}</span>
+                              </div>
+                          </div>
+                          <!-- <div class="col-lg-6">
+                            <div class="viewlableinformation">
+                                <label class="custom-label">Company name </label>
+                                  <span>{{teamUserData.user.company_name}}</span>
+                              </div>
+                          </div> -->
+                          <div class="col-lg-6">
+                            <div class="viewlableinformation">
+                                <label class="custom-label">Created at </label>
+                                  <span>{{teamUserData.user.created_at | date: httpClientService.defaltDate}}</span>
+                              </div>
+                          </div>
+                          
+                          <div class="col-lg-12">
+                            <div class="viewlableinformation">
+                                <label class="custom-label">Status</label>
+                                  <span class="statusview {{teamUserData.user.status ? 'green' : 'red'}}"> <i class="fa fa-circle"></i> {{teamUserData.user.status ? 'Active' : 'Deactive'}}</span>
+                              </div>
+                          </div>
+                          
+                        </div>
+                   </div>
+
+                   <div class="list-top-attribute">
+                      <h3> User Teams </h3>
+                  </div>
+                  <div class="table-data">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Team Name</th>
+                            <th>Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <ng-container *ngIf="teamUserData && teamUserData.user_teams.length">
+                            <tr *ngFor="let teamData of teamUserData.user_teams;let i=index;">
+                                <td><span class="name-user"><a  [routerLink]="['/teams/view/'+teamData.team_id._id]">{{teamData.team_id.title}}</a></span></td>
+                                <td><span class="name-user">{{ (teamData.team_id.description.length>80)? (teamData.team_id.description | slice:0:80)+'...':(teamData.team_id.description) }}</span></td>
+                            </tr>
+                          </ng-container>
+                          <ng-container *ngIf="!(teamUserData && teamUserData.user_teams.length)">
+                            <tr>
+                              <td colspan="2" class="text-center">No record found!</td>
+                            </tr>
+                          </ng-container>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+              </div>
+          </div>
+        </div>        
+    </div>
+</div>

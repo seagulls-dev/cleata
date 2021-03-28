@@ -1,0 +1,26 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section mvh dashborad-inner uploadpage">
+  	<div class="container">
+	    <div class="dashborad-panel">
+	        <app-businesssidemenu></app-businesssidemenu>
+	        <div class="dashborad-rightsider">
+	            <div id="content" class="text-center">
+                    <img class="mx-auto mb-8 inforicon" src="assets/images/exclamation-circle-duotone.svg" alt="img">
+                    <h1>Maximum Plan Limit Exceeded</h1>
+                    <p *ngIf="taskplananalytics">Warning! Your dataset contain {{taskplananalytics.task_total_rows}} rows but your current plan only allows the processing of {{taskplananalytics.allow_total_rows}} rows. You can continue under your current plan and the system will allow you to process the first {{taskplananalytics.allow_total_rows}} rows or you can upgrade your plan below.</p>
+                    <div class="mt-16 d-flex justify-content-center">
+                        <a [routerLink]="['/upgradeplan/tasks/'+task_id]" class="bg-blue-800">Upgrade My Plan </a>
+                        <a [routerLink]="" (click)="deleteRecordsAfterCurrentPlan()" class="bg-gray-300 ml-3">Continue</a>
+                    </div>
+                </div>
+          	</div>
+	    </div>        
+  	</div>
+</div>

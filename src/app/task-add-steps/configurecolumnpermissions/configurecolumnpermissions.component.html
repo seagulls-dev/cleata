@@ -1,0 +1,61 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section mvh dashborad-inner uploadpage">
+  	<div class="container">
+	    <div class="dashborad-panel">
+	        <app-businesssidemenu></app-businesssidemenu>
+	        <div class="dashborad-rightsider">
+	            <div id="content" *ngIf="taskData && taskHeaderStepData">
+				    <h1>We found {{total_rows}} rows</h1>
+				    <h3 class="mt-16 mb-6 opacity-25 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/assignheader/'+task_id]"> <b>2.</b> Please assign headings for your import </a> </h3>
+				    <h3 class="mt-3 mb-6 opacity-50 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/assigndatatype/'+task_id]"> <b>3.</b> Please assign data types to your columns </a> </h3>
+				    <h3 class="mt-3 mb-6 opacity-75 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/allocateteam/'+task_id]"> <b>4.</b> Allocate Teams </a> </h3>
+				    <h3 class="mt-3 mb-6 commanlsittecxt"> <b>5.</b> Configure column permissions </h3>
+				    <p>Select what each team can see and do for each of the columns in your dataset by selecting the preferred option from the drop down.</p>
+
+				    <div class="grayinfo rounded-lg shadow-sm">
+				        <p><strong>EDIT </strong> - Users in the team can edit the data in this column </p>
+				        <p><strong>READ ONLY</strong> - Users in the team can only view the content of the column </p>
+				        <p><strong>NO ACCESS</strong> - Users in the team will not see the data in the column at all </p>
+				    </div>
+
+
+				    <div class="table-responsive border border-gray-300 shadow-sm rounded-lg">
+				        <table class="shadow-sm table withoitbordrer samecolortable">
+				            <thead>
+				                <tr>
+				                    <th class="font-medium text-blue-800 ">Team</th>
+				                    <th class="border-1 font-medium text-blue-800" *ngFor="let taskHeaderData of taskHeaderStepData.data;let i=index;">{{taskHeaderData.column_name}}</th>
+				                </tr>
+				            </thead>
+				            <tbody *ngIf="taskStepData && taskStepData.data.teams.length">
+				                <tr *ngFor="let teams of taskStepData.data.teams; let t=index;">
+				                    <td class="text-gray-600 ">{{teams.team_name}}</td>
+				                    <td class="text-gray-600 border-1" *ngFor="let taskHeaderData of taskHeaderStepData.data;let i=index;"> 
+				                        <div>
+				                            <select class="selectcidcustom" [(ngModel)]="teams.permissions[i]" aria-hidden="true">
+				                                <option value="EDIT">EDIT</option>
+				                                <option value="READ">READ ONLY</option>
+				                                <option value="NO ACCESS">NO ACCESS</option>
+				                            </select>
+				                        </div>
+				                    </td>
+				                </tr>
+				            </tbody>
+				        </table>
+				    </div>
+
+				    <div class="w-full d-sm-flex mt-16 blckbtn">
+				        <a [routerLink]="" (click)="saveColumnPermissions()" class="bg-blue-800">Set Permissions  </a>
+				    </div>
+				</div>
+          	</div>
+	    </div>        
+  	</div>
+</div>

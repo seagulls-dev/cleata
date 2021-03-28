@@ -1,0 +1,124 @@
+<!--header start-->
+<header class="hover-effect inner-header">
+    <div class="container-fluid">
+    	<div class="header-content">
+        	<div class="logo inner-logo">
+            	<a [routerLink]="['/'+((isLoggedIn$ | async)?.role == 'business_user' ? 'dashboard' : ((isLoggedIn$ | async)?.role == 'team_user' ? 'dashboard/teamuser' : ''))]" (click)="scrollToTop()">
+                    <img src="assets/images/logo.png" alt="cleata logo" class="default-logo"/>
+                    <img src="assets/images/fixed-logo.png" alt="cleata logo" class="fixedview-logo"/>
+                </a>
+            </div>
+            <div class="header-right">
+               <nav class="navbar navbar-expand-lg navbar-light">
+              <button class="navbar-toggler hover-effect" id="nav-menus" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item" id="home-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="(isLoggedIn$ | async)?.role == 'business_user'">
+                    <a class="nav-link" [routerLink]="['/'+((isLoggedIn$ | async) ? 'dashboard' : '')]" (click)="scrollToTop()">Home </a>
+                  </li>
+                  <li class="nav-item" id="home-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="(isLoggedIn$ | async)?.role == 'team_user'">
+                    <a class="nav-link" [routerLink]="['/'+((isLoggedIn$ | async) ? 'dashboard/teamuser' : '')]" (click)="scrollToTop()">Home </a>
+                  </li>
+
+                  <li class="nav-item" id="home-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="(isLoggedIn$ | async)?.role == 'team_user'">
+                    <a class="nav-link" [routerLink]="['/tasks']" (click)="scrollToTop()">Manage datasets </a>
+                  </li>
+
+                  <li class="nav-item" [class.active]="httpClientService.hashURLActive=='whatiscleata'" *ngIf="!(isLoggedIn$ | async)">
+                    <a class="nav-link" [routerLink]='"."' [fragment]="'whatiscleata'">Data as an asset</a>
+                  </li>
+                  <li class="nav-item" [class.active]="httpClientService.hashURLActive=='howitwork'" *ngIf="!(isLoggedIn$ | async)">
+                    <a class="nav-link" [routerLink]='"."' [fragment]="'howitwork'">How it works</a>
+                  </li>
+                  <li class="nav-item" [class.active]="httpClientService.hashURLActive=='pricing'"  *ngIf="!(isLoggedIn$ | async)">
+                    <a class="nav-link" [routerLink]='"."' [fragment]="'pricing'">Pricing</a>
+                  </li>
+                  <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                    <a class="nav-link" [routerLink]="['/contactus']">Contact us</a>
+                  </li>
+                  <li class="nav-item d-block d-sm-none" *ngIf="!(isLoggedIn$ | async)">
+                   <a [routerLink]='"."' [fragment]="'pricing'" class="btn custom-btn">Sign up</a>
+                   <a [routerLink]="['/login']" class="btn custom-btn">Sign in</a>
+                  </li>
+
+                  <li class="nav-item d-block d-sm-none" *ngIf="(isLoggedIn$ | async)">
+                     <div class="profile-panel-head">
+                             <figure class="thumb" *ngIf="(isLoggedIn$ | async)?.profile_picture">
+                              <img [src]="httpClientService.imageUrl + (isLoggedIn$ | async)?.profile_picture" alt="profile"/>
+
+                              <!-- <img src="assets/images/avatar.png" *ngIf="!(isLoggedIn$ | async)?.profile_picture" alt="profile"/> -->
+                             </figure> 
+                             <div class="profileuser-name" *ngIf="(isLoggedIn$ | async)?.role == 'business_user'">
+                              <a [routerLink]="['/profile']" class="name">{{(isLoggedIn$ | async)?.full_name}}</a>
+                              <a [routerLink]="['/profile']" *ngIf="(isLoggedIn$ | async)?.plan_name" class="smalltext">{{(isLoggedIn$ | async)?.plan_name}}</a>
+                             </div>
+                             <div class="profileuser-name" *ngIf="(isLoggedIn$ | async)?.role == 'team_user'">
+                              <a [routerLink]="['/profile']" class="name">{{(isLoggedIn$ | async)?.full_name}}</a>
+                              <a [routerLink]="['/profile']" *ngIf="(isLoggedIn$ | async)?.plan_name" class="smalltext">{{(isLoggedIn$ | async)?.plan_name}}</a>
+                             </div>
+                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="5.122" height="24.329" class="mx-4" viewBox="0 0 5.122 24.329"><path d="M2.561,113.6a2.561,2.561,0,1,0,2.561,2.561A2.558,2.558,0,0,0,2.561,113.6Zm2.561-7.043A2.561,2.561,0,1,1,2.561,104,2.558,2.558,0,0,1,5.122,106.561Zm0,19.207a2.561,2.561,0,1,1-2.561-2.561A2.558,2.558,0,0,1,5.122,125.768Z" transform="translate(0 -104)" fill="#fff"></path></svg>
+                             </a>
+                             <div class="dropdown-menu dropdown-menu-right">
+                                  <ul>
+                                    <li><a [routerLink]="['/changepassword']"><i> <img src="assets/images/password_black.png" alt="icon"> </i>Change Password</a></li>
+                                    <li><a [routerLink]="" (click)="onLogout()"><i> <img src="assets/images/logout.png" alt="icon"> </i>Log out</a></li>
+                                  </ul>
+                              </div>
+                         
+                       </div>
+                    </li>
+                </ul>
+              </div>
+            </nav>
+                 
+            <div class="user-account" *ngIf="!(isLoggedIn$ | async)">
+             	<a [routerLink]='"."' [fragment]="'pricing'" class="btn custom-btn">Sign up</a>
+              <a [routerLink]="['/login']" class="btn custom-btn">Sign in</a>
+            </div>
+
+            <div class="user-account" *ngIf="(isLoggedIn$ | async)">
+               <div class="profile-panel-head">
+                    <figure class="thumb" *ngIf="(isLoggedIn$ | async)?.profile_picture">
+                      <img [src]="httpClientService.imageUrl + (isLoggedIn$ | async)?.profile_picture" alt="profile"/>
+
+                      <!-- <img src="assets/images/avatar.png" *ngIf="!(isLoggedIn$ | async)?.profile_picture" alt="profile"/> -->
+                    </figure> 
+                     <div class="profileuser-name" *ngIf="(isLoggedIn$ | async)?.role == 'business_user'">
+                      <a [routerLink]="['/profile']" class="name">{{(isLoggedIn$ | async)?.full_name}}</a>
+                      <a [routerLink]="['/profile']" *ngIf="(isLoggedIn$ | async)?.plan_name" class="smalltext">{{(isLoggedIn$ | async)?.plan_name}}</a>
+                     </div>
+                     <div class="profileuser-name" *ngIf="(isLoggedIn$ | async)?.role == 'team_user'">
+                      <a [routerLink]="['/profile']" class="name">{{(isLoggedIn$ | async)?.full_name}}</a>
+                      <a [routerLink]="['/profile']" *ngIf="(isLoggedIn$ | async)?.plan_name" class="smalltext">{{(isLoggedIn$ | async)?.plan_name}}</a>
+                     </div>
+                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="5.122" height="24.329" class="mx-4" viewBox="0 0 5.122 24.329"><path d="M2.561,113.6a2.561,2.561,0,1,0,2.561,2.561A2.558,2.558,0,0,0,2.561,113.6Zm2.561-7.043A2.561,2.561,0,1,1,2.561,104,2.558,2.558,0,0,1,5.122,106.561Zm0,19.207a2.561,2.561,0,1,1-2.561-2.561A2.558,2.558,0,0,1,5.122,125.768Z" transform="translate(0 -104)" fill="#fff"></path></svg>
+                     </a>
+                     <div class="dropdown-menu dropdown-menu-right">
+                          <ul>
+                            <li><a [routerLink]="['/changepassword']"><i> <img src="assets/images/password_black.png" alt="icon"> </i>Change Password</a></li>
+                            <li><a [routerLink]="" (click)="onLogout()"><i> <img src="assets/images/logout.png" alt="icon"> </i>Log out</a></li>
+                          </ul>
+                      </div>
+                 
+               </div>    
+            </div>
+                  <!-- <div class="search-panel">
+                       <i class="fa fa-search"></i>
+                        <div class="search-content">
+                            <input name="searchword" type="text" placeholder="Search" class="form-control">
+                               <i class="fa fa-times" aria-hidden="true"></i>
+                            </div>
+                   </div> -->
+                 
+            </div>
+        </div>
+    </div>
+</header>
+<!--header start-->

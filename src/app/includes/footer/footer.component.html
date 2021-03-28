@@ -1,0 +1,40 @@
+<footer>
+	<div class="container-fluid">
+    	<div class="row align-items-center">
+           <div class="col-md-4 logo-slap">
+                <a [routerLink]="['/'+((isLoggedIn$ | async)?.role == 'business_user' ? 'dashboard' : ((isLoggedIn$ | async)?.role == 'team_user' ? 'dashboard/teamuser' : ''))]" (click)="scrollToTop()" class="footerlogo"><img src="assets/images/footer-logo.png" alt="img"></a>
+           		<ul class="footer-social-media">
+            	
+                <!-- <li>
+                	<a href="javascript:void(0)"> <i class="fa fa-google-plus"></i> </a>
+                </li>
+                <li>
+                	<a href="javascript:void(0)"> <i class="fa fa-instagram"></i> </a>
+                </li> -->
+                <li *ngIf="httpClientService.settings && httpClientService.settings.facebook_url">
+                	<a href="{{httpClientService.settings.facebook_url}}" target="_blank"> <img src="assets/images/facebook-square-brands.svg"> </a>
+                </li>
+                <li *ngIf="httpClientService.settings && httpClientService.settings.twitter_url">
+                	<a href="{{httpClientService.settings.twitter_url}}" target="_blank"> <img src="assets/images/twitter-brands.svg"> </a>
+                </li>
+                <li *ngIf="httpClientService.settings && httpClientService.settings.linkedin_url">
+                    <a href="{{httpClientService.settings.linkedin_url}}" target="_blank"> <img src="assets/images/linkedin-new.png"> </a>
+                </li>
+            </ul>
+           </div>
+        	<div class="col-md-5">
+              <div class="footer-link text-center">
+              	<ul>
+                	<li><a [routerLink]="['/page/privacy-policy']">Privacy policy</a></li>
+                    <li><a [routerLink]="['/page/terms-and-conditions']">Terms and conditions</a></li>
+                    <li><a [routerLink]="['/page/security-policy']">Security policy</a></li>
+                    
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-3 copyright-txt">
+            	Copyright © 2020 Cleata
+            </div>
+        </div>
+    </div>
+</footer>

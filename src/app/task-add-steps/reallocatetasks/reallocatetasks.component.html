@@ -1,0 +1,30 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section mvh dashborad-inner uploadpage">
+  	<div class="container">
+	    <div class="dashborad-panel">
+	        <app-businesssidemenu></app-businesssidemenu>
+	        <div class="dashborad-rightsider">
+	            <div id="content">
+                    <h1>We found {{total_rows}} rows</h1>    
+                    <h3 class="mt-16 mb-6 opacity-25 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/allocateteam/'+task_id]"> <b>4.</b> Allocate Teams </a> </h3>
+                    <h3 class="mt-3 mb-6 opacity-50 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/configurecolumnpermissions/'+task_id]"> <b>5.</b> Configure column permissions </a> </h3>
+                    <h3 class="mt-3 mb-6 opacity-75 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/conflictcolumnpermissions/'+task_id]"> <b>6.</b> Permission conflict management </a> </h3>
+                    <h3 class="mt-3 mb-6 commanlsittecxt"> <b>7.</b> Do you want to allow users to reallocate tasks? </h3>
+                    <p class="mb-8">Reallocation allows users to reallocate records to another team or team member directly without manager approval, this is useful as the user may know who would be best suited to review a record in case it has been allocated incorrectly, if you select no, then all record rejections by the user will go to you to reallocate.</p>
+
+                    <div class="w-full d-sm-flex mt-16">
+                     	<a [routerLink]="" (click)="saveReallocateTask(true)" class="bg-blue-800">Yes </a>
+                      <a [routerLink]="" (click)="saveReallocateTask(false)" class="bg-gray-300 ml-3">No </a>
+                    </div>
+               	</div>
+          	</div>
+	    </div>        
+  	</div>
+</div>

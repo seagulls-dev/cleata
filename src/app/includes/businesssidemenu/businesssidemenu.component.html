@@ -1,0 +1,43 @@
+<div class="dashborad-leftsider">
+	<a [routerLink]="['/business-user/tasks/add']" class="gradient-blue datafilebtn" *ngIf="(isLoggedIn$ | async)?.role == 'business_user'">Upload Datafile</a>
+	<div class="shadow-xl rounded-xl">
+        <span class="dash-menu-heading bg-blue-700">Menu</span>
+		<ul>
+			<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:false}" *ngIf="(isLoggedIn$ | async)?.role == 'business_user'">
+		        <a [routerLink]="['/dashboard']"><img src="assets/images/address-book-duotone.svg" alt="img"> Dashboard</a>
+		    </li>
+
+		    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:false}" *ngIf="(isLoggedIn$ | async)?.role == 'team_user'">
+		        <a [routerLink]="['/dashboard/teamuser']"><img src="assets/images/address-book-duotone.svg" alt="img"> Dashboard</a>
+		    </li>
+
+		    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:false}" *ngIf="(isLoggedIn$ | async)?.role == 'business_user'">
+		        <a [routerLink]="['/teamusers']"><img src="assets/images/address-book-duotone.svg" alt="img"> Manage users</a>
+		    </li>
+		    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:false}" *ngIf="(isLoggedIn$ | async)?.role == 'business_user'">
+		        <a [routerLink]="['/teams']"><img src="assets/images/users-class-duotone.svg" alt="img">  <i class="fa  fa-slideshare default-fa-icon"></i> Manage teams</a>
+		    </li>
+		    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:false}" *ngIf="(isLoggedIn$ | async)?.role == 'business_user'">
+		         <a [routerLink]="['/business-user/tasks']"><img src="assets/images/folders-duotone.svg" alt="img"> Manage datasets</a>
+		    </li>
+		    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:false}" *ngIf="(isLoggedIn$ | async)?.role == 'business_user'">
+		         <a [routerLink]="['/business-user/uncategorizedtasks']"><img src="assets/images/folders-duotone.svg" alt="img"> Uncategorized datasets</a>
+		    </li>
+		    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:false}" *ngIf="(isLoggedIn$ | async)?.role == 'business_user'">
+		         <a [routerLink]="['/reports']"><img src="assets/images/folders-duotone.svg" alt="img"> Reports</a>
+		    </li>
+		    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:false}" *ngIf="(isLoggedIn$ | async)?.role == 'team_user'">
+		         <a [routerLink]="['/tasks']"><img src="assets/images/folders-duotone.svg" alt="img"> Manage datasets</a>
+		    </li>
+		    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:false}"  *ngIf="(isLoggedIn$ | async)?.role == 'business_user'">
+		        <a [routerLink]="['/upgradeplan']"><img src="assets/images/hourglass-half-duotone.svg" alt="img"> Upgrade plan <i class="fa fa-angle-right visibleactivearrow"></i> </a>
+		    </li>
+		    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:false}">
+		        <a [routerLink]="['/profile']"><img src="assets/images/id-card-duotone.svg" alt="img"> Manage profile</a>
+		    </li>
+		    <li>
+		        <a [routerLink]="" (click)="authService.logout()"><img src="assets/images/sign-out-duotone.svg" alt="img"> Logout</a>
+		    </li>
+		</ul>
+	</div>
+</div>

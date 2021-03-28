@@ -1,0 +1,32 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section mvh dashborad-inner uploadpage">
+  	<div class="container">
+	    <div class="dashborad-panel">
+	        <app-businesssidemenu></app-businesssidemenu>
+	        <div class="dashborad-rightsider">
+	            <div id="content">
+                    <h1>We found {{total_rows}} rows</h1>
+                    <h3 class="mt-16 mb-6 opacity-25 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/configurecolumnpermissions/'+task_id]"> <b>5.</b> Configure column permissions </a> </h3>
+                    <h3 class="mt-3 mb-6 opacity-50 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/conflictcolumnpermissions/'+task_id]"> <b>6.</b> Permission conflict management </a> </h3>
+                    <h3 class="mt-3 mb-6 opacity-75 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/reallocatetasks/'+task_id]"> <b>7.</b> Do you want to allow users to reallocate tasks? </a> </h3>
+                    <h3 class="mt-3 mb-6 commanlsittecxt"> <b>8.</b> Do you want to configure business rules? </h3>
+                    <p class="mb-3">Business rules allow you to apply conditions to data within columns which then allows you to assign it to a certain team based on those conditions.</p>
+                    <p class="mb-3">For example. when Column A (Invoice Value) &gt; 100000 assign to Team Major Projects</p>
+                    <p class="mb-3">If you just want to divide the data up between the teams and not base it on logic then select No.</p>
+
+                    <div class="w-full d-sm-flex mt-16">
+                     	<a [routerLink]="" (click)="saveWantConfigureBusinessRules(true)" class="bg-blue-800">Yes </a>
+                        <a [routerLink]="" (click)="saveWantConfigureBusinessRules(false)" class="bg-gray-300 ml-3">No </a>
+                    </div>
+                </div>
+          	</div>
+	    </div>        
+  	</div>
+</div>

@@ -1,0 +1,131 @@
+<!--banner start-->
+      <div class="banner-section inner-banner-section">
+      </div>
+      <!--banner end-->
+      
+      <!--login page-->
+        <div class="inner-section object-comman contact-page">
+            <div class="container">
+              <div class="credentials-panel">
+              
+                    <div class="crendentails-left-section">
+                    	<figure>
+                            <div class="ripple-anim">
+                              <img src="assets/images/contact-banner.png" alt="contact-banner"/>
+                            </div>
+                        </figure>
+                    </div>
+              
+            	
+                   <div class="crendentails-right-section">
+                          <div class="page-heading text-center">
+                                    <img src="assets/images/heading-object.png" alt="heading-object">
+                                    <h2>Contact Us</h2>
+                                    <p>Have a question or want to send us a comment? No problem! Simply fill in the form and someone will be in touch shortly</p>
+                          </div>
+                          <form [formGroup]="contactForm" (ngSubmit)="saveContactDetail()">
+                           <div class="row">
+                                 <div class="col-sm-12">
+                                    <div class="form-group">
+                                         <div class="append-icon" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">            
+                                            <input type="text" class="form-control" placeholder="Enter name" formControlName="name">
+                                             <img src="assets/images/user.png" alt="name"/>
+                                         </div>  
+                                         <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                          <div *ngIf="f.name.errors.required">Name is required</div>
+                                          <div *ngIf="f.name.errors.maxlength">Name should be max {{f.name.errors.maxlength.requiredLength}} characters</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="append-icon" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">            
+                                             <input type="text" class="form-control" placeholder="Enter email" formControlName="email">
+                                             <img src="assets/images/email.png" alt="email">
+                                        </div>
+                                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                          <div *ngIf="f.email.errors.required">Email is required</div>
+                                          <div *ngIf="f.email.errors.maxlength">Email should be max {{f.email.errors.maxlength.requiredLength}} characters</div>
+                                          <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="append-icon" [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }">            
+                                             <input type="number" class="form-control" placeholder="Enter mobile" formControlName="mobile">
+                                             <img src="assets/images/phone-o.png" alt="mobile">
+                                        </div>
+                                        <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                                          <div *ngIf="f.mobile.errors.required">Mobile number is required</div>
+                                          <div *ngIf="f.mobile.errors.range && f.mobile.errors.range.requiredMaxLength">Mobile number should be max {{f.mobile.errors.range.requiredMaxLength}} digit</div>
+                                          <div *ngIf="f.mobile.errors.range && f.mobile.errors.range.requiredMinLength">Mobile number should be min {{f.mobile.errors.range.requiredMinLength}} digit</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                 <div class="col-sm-12">
+                                    <div class="form-group" [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
+                                    	<textarea class="form-control" placeholder="Enter message here" formControlName="description"></textarea>
+                                    </div>
+                                    <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                                      <div *ngIf="f.description.errors.required">Message is required</div>
+                                      <div *ngIf="f.description.errors.maxlength">Message should be max {{f.description.errors.maxlength.requiredLength}} characters</div>
+                                    </div>
+                                </div>
+                                
+                                
+                                
+                                <div class="col-sm-12">
+                                      <div class="form-group text-center">
+                                        <button type="submit" class="btn submit-btn">
+                                            Send
+                                            <i class="fa fa-angle-right"></i>
+                                        </button>
+                                       </div>
+                                </div>
+                            
+                            </div>
+                          </form>
+                          <!-- <div class="social-media">
+                          	 <span>Social media</span>
+                             <ul>
+                        	
+                        	
+                            
+                            <li>
+                            	<a href="javascript:void(0)"> <i class="fa fa-google-plus"></i> </a>
+                            </li>
+                            <li>
+                            	<a href="javascript:void(0)"> <i class=" 	fa fa-instagram"></i> </a>
+                            </li>
+                            <li>
+                            	<a href="javascript:void(0)"> <i class="fa fa-facebook"></i> </a>
+                            </li>
+                            <li>
+                            	<a href="javascript:void(0)"> <i class="fa fa-twitter"></i> </a>
+                            </li>
+                       
+                        </ul>
+                          </div> -->
+                    </div>
+              
+            </div>
+              <!-- <div class="get-touch-part">
+                <div class="page-heading text-center">
+                                    <img src="assets/images/heading-object.png" alt="heading-object">
+                                    <h2>Get in touch</h2>
+                          </div>
+              	<ul>
+                	<li> <figure><img src="assets/images/get-mobile.png"/></figure>
+                    <a href="#">+91-0123456789 ,</a> <a href="#">+91-0123456789</a>
+                    </li>
+                    <li><figure><img src="assets/images/get-message.png"/></figure>
+                    <a href="#">example@email.com, </a> <a href="#">example@email.com</a>
+                    </li>
+                </ul>
+              </div> -->
+            </div>
+        </div>

@@ -1,0 +1,92 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section object-comman object-comman-reverse after-login-section">
+  	<div class="container">
+	      <div class="dashborad-panel">
+	        <app-businesssidemenu></app-businesssidemenu>
+
+	        <div class="dashborad-rightsider">
+                             
+	            <div class="edit-profile-set view-team-manager-page" *ngIf="teamData">
+	                 <div class="list-top-attribute">
+	                    <h3> View team </h3>
+	                    <div class="rightattributepanel">
+	                    	
+	                        <a [routerLink]="['/teams/edit/'+teamData.team._id]" class="btn blue-custom-btn"> + Edit team </a>
+	                        <a [routerLink]="['/teams']" class="btn blue-custom-btn backbtn"> <i class="fa fa-long-arrow-left"></i> Back </a>
+	                    </div>
+	                 </div>
+	                 
+	                <div class="viewmanagercontent">
+	                      <div class="row">
+	                      	<div class="col-lg-6">
+	                        	<div class="viewlableinformation">
+	                            	<label class="custom-label">Team name </label>
+	                                <span>{{teamData.team.title}}</span>
+	                            </div>
+	                        </div>
+	                        <div class="col-lg-6">
+	                        	<div class="viewlableinformation">
+	                            	<label class="custom-label">Created at </label>
+	                                <span>{{teamData.team.created_at | date: httpClientService.defaltDate}}</span>
+	                            </div>
+	                        </div>
+	                        <div class="col-lg-12">
+	                        	<div class="viewlableinformation">
+	                            	<label class="custom-label">Description</label>
+	                                <span>{{teamData.team.description}}</span>
+	                            </div>
+	                        </div>
+	                        
+	                        <div class="col-lg-12">
+	                        	<div class="viewlableinformation">
+	                            	<label class="custom-label">Status</label>
+	                                <span class="statusview {{teamData.team.status ? 'green' : 'red'}}"> <i class="fa fa-circle"></i> {{teamData.team.status ? 'Active' : 'Deactive'}}</span>
+	                            </div>
+	                        </div>
+	                        
+	                      </div>
+	                </div>
+
+	                <div class="list-top-attribute">
+	                    <h3> Team Users </h3>
+	                </div>
+	                <div class="table-data">
+                        <div class="table-responsive">
+                         	<table class="table">
+                            	<thead>
+                                   	<tr>
+                                	  <th>Name</th>
+                                      <th>Email</th>
+                                      <th>Mobile</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  	<ng-container *ngIf="teamData && teamData.team_users.length">
+	                                  	<tr *ngFor="let userData of teamData.team_users;let i=index;">
+	                                        <td><span class="name-user"><a  [routerLink]="['/teamusers/view/'+userData.user_id._id]">{{userData.user_id.full_name}}</a></span></td>
+	                                        <td><span class="name-user">{{userData.user_id.email}}</span></td>
+	                                        <td><span class="name-user">{{userData.user_id.mobile}}</span></td>
+	                                    </tr>
+                                    </ng-container>
+
+                                    <ng-container *ngIf="!(teamData && teamData.team_users.length)">
+										<tr>
+											<td colspan="4" class="text-center">No record found!</td>
+										</tr>
+                                    </ng-container>
+                                </tbody>
+                            </table>
+                         </div>
+                    </div>
+	            </div>
+	        </div>
+	      </div>        
+  	</div>
+</div>

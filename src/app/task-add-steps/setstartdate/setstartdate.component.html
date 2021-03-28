@@ -1,0 +1,39 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section mvh dashborad-inner uploadpage">
+  	<div class="container">
+	    <div class="dashborad-panel">
+	        <app-businesssidemenu></app-businesssidemenu>
+	        <div class="dashborad-rightsider">
+	            <div id="content">
+                    <h1>We found {{total_rows}} rows</h1>
+                    <h3 class="mt-16 mb-6 opacity-25 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/configurebusinessrules/'+task_id]"> <b>9. </b> Configure business rules </a> </h3>
+                    <h3 class="mt-3 mb-6 opacity-50 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/reviewmatchingdata/'+task_id]"> <b>10. </b> Review matching data </a> </h3>
+                    <h3 class="mt-3 mb-6 opacity-75 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/uncategorizedresulttoteams/'+task_id]"> <b>11. </b> Would you like to assign the uncategorized results to teams to deal with? </a> </h3>
+                    <h3 class="mt-3 mb-6 commanlsittecxt"> <b>12.</b> Set a start date </h3>
+                    <p class="mb-4">Before we can go ahead and process your job, there's just a couple of things left to do.</p>
+
+                    <h3 *ngIf="start_date">Start Date: {{start_date | date: 'dd MMMM yyyy'}}</h3>
+
+                   	<div class="w-full d-sm-flex mt-16">
+                   		<button class="bg-blue-800 mr-3" *ngIf="start_date" (click)="saveStartDate()">Continue</button>
+
+                   		<mat-form-field class="example-full-width" appearance="fill" style="width:1px;visibility:hidden;height: 0;">
+          						  <mat-label>Choose a date</mat-label>
+          						  <input matInput [matDatepicker]="picker" [min]="min_date" [(ngModel)]="start_date">
+          						  <mat-datepicker #picker></mat-datepicker>
+          						</mat-form-field>
+                      
+                    	<button class="bg-blue-800" [ngClass]="{'bg-blue-800': !start_date, 'bg-gray-300': start_date}" (click)="picker.open()">{{start_date ? "Change Date" : "Set start date"}}</button>
+                    </div>
+                </div>
+          	</div>
+	    </div>        
+  	</div>
+</div>

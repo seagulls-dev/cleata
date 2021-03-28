@@ -1,0 +1,202 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+  <div class="inner-section object-comman object-comman-reverse after-login-section">
+      <div class="container">
+              <div class="dashborad-panel">
+                <app-businesssidemenu></app-businesssidemenu>
+
+                  <div class="dashborad-rightsider">
+                    <div class="d-sm-flex justify-content-between dropdownpanelright">
+                      <h3>
+                        Dashboard
+                      </h3>
+                      <form class="no-padding" [formGroup]="dashboardAnalyticsForm" (ngSubmit)="getInfo(false)">
+                        <ul class="d-flex">
+                          <li>
+                            <div class="form-group">
+                              <select class="form-control" formControlName="task_id" (change)="getInfo(false)">
+                                <option value="">All Datasets</option>
+                                <option *ngFor="let taskData of tasksData;let t=index;" value="{{taskData._id}}">{{taskData.file_name}}</option>
+                                </select>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="form-group">
+                              <select class="form-control" formControlName="team_id" (change)="getInfo(false)">
+                                <option value="">All Teams</option>
+                                <option *ngFor="let teamData of teamsData;let te=index;" value="{{teamData._id}}">{{teamData.title}}</option>
+                              </select>
+                            </div>
+                          </li>
+                        </ul>
+                      </form>
+                    </div>
+                       
+                    <div class="row mb-3">
+                              <!-- <div class="col-lg-4">
+                                <div class="couting-dashboard">
+                                    <div>
+                                    <img src="assets/images/team.png" alt="team"/>
+                                      <span>Total teams</span>
+                                      <strong>{{totalTeams}}</strong>
+                                    </div>
+                                  </div>
+                              </div>
+
+                              <div class="col-lg-4">
+                                <div class="couting-dashboard">
+                                    <div>
+                                    <img src="assets/images/team-members.png" alt="team"/>
+                                      <span>Total team members</span>
+                                      <strong>{{totalTeamUsers}}</strong>
+                                    </div>
+                                  </div>
+                              </div> -->
+
+                              <div class="col-lg-6">
+                                <div class="couting-dashboard">
+                                    <div>
+                                    <img src="assets/images/total-task.png" alt="task"/>
+                                      <span>Total records allocated</span>
+                                      <strong>{{totalTasks}}</strong>
+                                    </div>
+                                  </div>
+                              </div>
+
+                              <div class="col-lg-6">
+                                <div class="couting-dashboard">
+                                     <div>
+                                    <img src="assets/images/record.png" alt="pending-task"/>
+                                       <span>Records awaiting review</span>
+                                       <strong>{{totalPendingTasks}}</strong>
+                                     </div>
+                                  </div>
+                              </div>
+
+                              
+                          </div>
+                          <div class="row">
+                              <div class="col-lg-6">
+                                <div class="couting-dashboard">
+                                      <div>
+                                    <img src="assets/images/completed-record.png" alt="completed-task"/>
+                                       <span>Records completed</span>
+                                       <strong>{{totalCompletedTasks}}</strong>
+                                       </div>
+                                  </div>
+                              </div>
+
+                              <div class="col-lg-6">
+                                <div class="couting-dashboard">
+                                      <div>
+                                    <img src="assets/images/uncategories-record.png" alt="completed-task"/>
+                                       <span>Uncategorised records</span>
+                                       <strong>{{totalUnassignedTasks}}</strong>
+                                       </div>
+                                  </div>
+                              </div>
+
+                              <!-- <div class="col-lg-4">
+                                <div class="couting-dashboard">
+                                      <div>
+                                    <img src="assets/images/average-time.png" alt="completed-task"/>
+                                       <span>Average Time</span>
+                                       <strong>{{average_time}}</strong>
+                                       </div>
+                                  </div>
+                              </div> -->
+                        </div>
+
+                        
+
+                        <div class="graph-content">
+                          <div class="datepikckerdiv d-flex justify-content-end">
+                            <form class="no-padding" [formGroup]="dashboardChartForm" (ngSubmit)="dashboardCompletedRecordBusinessUser(false)">
+                              <ul class="d-flex">
+                                <li>
+                                  <div class="form-group">
+                                    <select class="form-control" formControlName="task_id" (change)="dashboardCompletedRecordBusinessUser(false)">
+                                      <option value="">All Dataset</option>
+                                      <option *ngFor="let taskData of tasksData;let t=index;" value="{{taskData._id}}">{{taskData.file_name}}</option>
+                                      </select>
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="form-group">
+                                    <select class="form-control" formControlName="team_id" (change)="dashboardCompletedRecordBusinessUser(false)">
+                                      <option value="">All Teams</option>
+                                      <option *ngFor="let teamData of teamsData;let te=index;" value="{{teamData._id}}">{{teamData.title}}</option>
+                                    </select>
+                                  </div>
+                                </li>
+                                <li>
+                                  <mat-form-field appearance="fill">
+                                      <mat-date-range-input [max]="min_date" [rangePicker]="picker">
+                                        <input matStartDate placeholder="Start date" formControlName="start_date" (dateChange)="dashboardCompletedRecordBusinessUser(false)">
+                                        <input matEndDate placeholder="End date" formControlName="end_date" (dateChange)="dashboardCompletedRecordBusinessUser(false)">
+                                      </mat-date-range-input>
+                                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                      <mat-date-range-picker #picker></mat-date-range-picker>
+                                  </mat-form-field>
+                                </li>
+                              </ul>
+                            </form>
+                          </div>
+                            <h3>Total Completed Each Day</h3>
+                            <canvas id="completedEachDay" style="width: 100% height:400px !important;"></canvas>
+                            <!-- <img src="assets/images/graph-1.png" alt="graph"/> -->
+                        </div>
+
+                        <div class="graph-content">
+                            <h3>Cumulative Jobs Completed</h3>
+                            <canvas id="cumulativeJobCompleted" style="width: 100% height:400px !important;"></canvas>
+                        </div>
+
+                        <div class="graph-content">
+                            <h3>Total Jobs Outstanding</h3>
+                            <canvas id="outstandingJobs" style="width: 100% height:400px !important;"></canvas>
+                        </div>
+
+                        <div class="graph-content">
+                            <h3>Completed task by team and team manager</h3>
+                            <canvas id="teamUserJobs" style="width: 100%; height:400px !important;"></canvas>
+                        </div>
+
+                        
+
+                        <div class="graph-content">
+                          <div class="datepikckerdiv d-flex justify-content-end">
+                            <form class="no-padding" [formGroup]="dashboardBurnDownForm" (ngSubmit)="dashboardBurndownChartBusinessUser()">
+                              <ul class="d-flex">
+                                <li>
+                                  <div class="form-group">
+                                    <select class="form-control" formControlName="task_id" (change)="dashboardBurndownChartBusinessUser()">
+                                      <option value="">Select Dataset</option>
+                                      <option *ngFor="let taskData of tasksData;let t=index;" value="{{taskData._id}}">{{taskData.file_name}}</option>
+                                      </select>
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="form-group">
+                                    <select class="form-control" formControlName="team_id" (change)="dashboardBurndownChartBusinessUser()">
+                                      <option value="">All Teams</option>
+                                      <option *ngFor="let teamData of teamsData;let te=index;" value="{{teamData._id}}">{{teamData.title}}</option>
+                                    </select>
+                                  </div>
+                                </li>
+                              </ul>
+                            </form>
+                          </div>
+                          <h3>Burn Down Chart</h3>
+                          <canvas id="burnDownChart" style="width: 100%; height:400px !important;"></canvas>
+                        </div>
+                  </div>
+              </div>        
+      </div>
+  </div>

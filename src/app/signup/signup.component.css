@@ -1,0 +1,12 @@
+.is-invalid {
+    border-color: #dc3545;
+}
+
+.invalid-feedback, .invalid-feedback>a {
+	color: #dc3545 !important;
+}
+
+.innershapebg {
+	max-width: 650px;
+}
+

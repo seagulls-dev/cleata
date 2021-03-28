@@ -1,0 +1,114 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section object-comman object-comman-reverse after-login-section">
+  	<div class="container">
+	      <div class="dashborad-panel">
+	        <app-businesssidemenu></app-businesssidemenu>
+
+	          <div class="dashborad-rightsider">
+                             
+                <div class="edit-profile-set manager-teamuserlist-page">
+                     <div class="list-top-attribute">
+                        <h3> Manage Datasets </h3>
+                        <div class="rightattributepanel">
+                        	<div class="attributesearch">
+                            	<input type="text" class="form-control" placeholder="Search task file name" [(ngModel)]="searchKeyword" (ngModelChange)="searchByKeyword()">
+                                <img src="assets/images/black-search.png" alt="img">
+                            </div>
+                            <a [routerLink]="['/business-user/tasks/add']" class="btn blue-custom-btn">+ ADD DATASETS</a>
+                        </div>
+                     </div>
+                     <div class="table-data">
+                         <div class="table-responsive">
+                         	<table class="table">
+                            	<thead>
+                                   <tr>
+                                      <!-- <th>Title</th>
+                                      <th class="text-center">Description</th> -->
+                                      <th class="text-center">File Name</th>
+                                      <th class="text-center">Start Date</th>
+                                      <th class="text-center">End Date</th>
+                                      <th class="text-center">Uncategorized Record</th>
+                                      <th>Created at</th>
+                                      <th class="text-center">Status</th>
+                                      <th class="text-center">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  <ng-container *ngIf="tasksData && tasksData.length">
+                                  	<tr *ngFor="let taskData of tasksData;let i=index;">
+                                      	
+                                          <!-- <td><span class="name-user">{{taskData.title}}</span></td>
+                                          <td class="text-center"><span class="name-user">{{ (taskData.description.length>80)? (taskData.description | slice:0:80)+'..':(taskData.description) }}</span></td> -->
+                                          <td class="text-center"><span class="name-user">{{taskData.file_name}}</span></td>
+                                          <td class="text-center">{{taskData.start_date ? (taskData.start_date | date: "dd MMM yyyy") : "-"}}</td>
+                                          <td class="text-center">{{taskData.end_date ? (taskData.end_date | date: "dd MMM yyyy") : "-"}}</td>
+                                          <td>
+                                            <ng-container *ngIf="taskData.process_complete && taskData.uncategorized_type">
+                                              {{taskData.uncategorized_type=="download"?"Download":"Reassign"}}
+                                            </ng-container>
+                                            <ng-container *ngIf="taskData.process_complete && !taskData.uncategorized_type">
+                                              <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" id="download" name="uncategorized_type{{i}}" value="download" (click)="updateUnuncategorizedType($event, i)">
+                                                <label class="form-check-label" for="download">Download</label>
+                                              </div>
+                                              <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" id="reassign" name="uncategorized_type{{i}}" value="reassign" (click)="updateUnuncategorizedType($event, i)">
+                                                <label class="form-check-label" for="reassign">Reassign</label>
+                                              </div>
+                                            </ng-container>
+                                          </td>
+                                          <td>{{taskData.created_at | date: httpClientService.defaltDate}}</td>
+                                          <td class="text-center"><img [src]="'assets/images/'+(taskData.process_complete ? 'green' : 'red')+'-status.png'" alt="img"></td>
+                                          <td>
+                                          	<div class="action">
+                                          		<a [routerLink]="['/business-user/tasks/view/'+taskData._id]"><img src="assets/images/view.png" alt="img"></a>
+                                              <!-- <a [routerLink]="" (click)="deleteTeam(i)"><img src="assets/images/delete.png" alt="img"></a> -->
+                                              <a [routerLink]="['/tasks/doesheader/' + taskData._id]" *ngIf="!taskData.process_complete"><img src="assets/images/edit.png" alt="img"></a>
+                                          	</div>
+                                          </td>
+                                      </tr>
+                                    </ng-container>
+
+                                    <ng-container *ngIf="!(tasksData && tasksData.length)">
+                                      <tr>
+                                        <td colspan="6" class="text-center">No record found!</td>
+                                      </tr>
+                                    </ng-container>
+                                </tbody>
+                            </table>
+                         </div>
+                         <div class="table-show-pagination">
+                          <div class="show-item">
+                              <span>Page {{activePage}} of {{pageCount}}, showing {{currentCount}} records out of {{count}} total</span>
+                            </div>
+                            <ul class="pagination" style="overflow: auto;">
+                              <li class="page-item {{!prevPage?'disabled':''}}">
+                                <a [routerLink]="" class="page-link pageprev" (click)="gotoPrevious()">Prev</a>
+                              </li>
+
+                              <ul class="pagination" style="overflow: auto;border: none;">
+                                <li *ngFor="let page of pageArray;let i=index;" class="page-item">
+                                  <a [routerLink]="" class="page-link {{activePage==page ? 'active' : ''}}"
+                                    (click)="gotoPage(i+1)">{{page}}</a>
+                                </li>
+                              </ul>
+
+                              <li class="page-item {{!nextPage?'disabled':''}}">
+                                <a [routerLink]="" class="page-link pagenext" (click)="gotoNext()">Next</a>
+                              </li>
+                            </ul>
+                         </div>   
+                     </div>
+                        
+                </div>
+            </div>
+	      </div>        
+  	</div>
+</div>

@@ -1,0 +1,135 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section object-comman object-comman-reverse after-login-section">
+  	<div class="container">
+	      <div class="dashborad-panel">
+	        <app-businesssidemenu></app-businesssidemenu>
+
+	         <div class="dashborad-rightsider" *ngIf="taskData">
+                <div class="edit-profile-set add-teamuserlist-page">
+                     <div class="list-top-attribute">
+                        <h3> Edit task </h3>
+                        <div class="rightattributepanel">
+                        	
+                           <a [routerLink]="['/business-user/tasks']" class="btn blue-custom-btn backbtn"> <i class="fa fa-long-arrow-left"></i> Back </a>
+                        </div>
+                     </div>
+                     <div class="viewmanagercontent">
+                        <form [formGroup]="taskForm" (ngSubmit)="saveTask()">
+                          <div class="row">
+                          	<div class="col-lg-12">
+                            	<div class="addlableinformation">
+                                	<label class="custom-label">Title </label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control without-append-input" placeholder="Enter title" formControlName="title" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+                                        <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                                          <div *ngIf="f.title.errors.required">Title is required</div>
+                                          <div *ngIf="f.title.errors.maxlength">Title should be max {{f.title.errors.maxlength.requiredLength}} characters</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                            	<div class="addlableinformation">
+                                	<label class="custom-label">Description </label>
+                                    <div class="form-group">
+                                        <textarea type="text" class="form-control without-append-input" placeholder="Enter description" formControlName="description" [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></textarea>
+                                        <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                                          <div *ngIf="f.description.errors.required">Description is required</div>
+                                          <div *ngIf="f.description.errors.maxlength">Description should be max {{f.description.errors.maxlength.requiredLength}} characters</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                            	<div class="addlableinformation statusaction">
+                                	<label class="custom-label">Status</label>
+                                    <label class="switch">
+                                      <input type="checkbox" formControlName="status">
+                                      <span class="switchslider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="col-sm-12">
+                                  <div class="form-group text-center">
+                                    <div class="btn submit-btn">
+                                       <input type="submit" value="Update task"> 
+                                       <i class="fa fa-angle-right"></i>
+                                    </div>
+                                   </div>
+                            </div>
+                          </div>
+                        </form>
+                     </div>
+                        
+                </div>
+
+                <div class="edit-profile-set manager-teamuserlist-page mt-4" *ngIf="taskData.task_rules && taskData.task_rules.length">
+                     <div class="list-top-attribute">
+                        <h3> Task Rules </h3>
+                     </div>
+                     <div class="table-data">
+                         <div class="table-responsive">
+                          <table class="table">
+                              <thead>
+                                   <tr>
+                                      <th>Teams</th>
+                                      <th>Condition</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  <ng-container *ngFor="let task_rules of taskData.task_rules">
+                                    <tr *ngIf="task_rules.team_ids.length">
+                                      <td>
+                                        <ng-container *ngFor="let team_ids of task_rules.team_ids;let i=index;">{{(i ? ", " : "")+team_ids.title}}</ng-container>
+                                      </td>
+                                      <td>
+                                        <ng-container *ngFor="let field_conditions of task_rules.field_conditions;let i=index;">{{i ? ", " : ""}}{{taskData.task_detail.task_header[field_conditions.header_index]}} {{field_conditions.operator}} {{field_conditions.condition_value}}</ng-container>
+                                      </td>
+                                    </tr>
+                                  </ng-container>
+                                  
+                                </tbody>
+                            </table>
+                         </div>
+                     </div>
+                </div>
+
+                <div class="edit-profile-set manager-teamuserlist-page mt-4" *ngIf="taskData.task_permissions && taskData.task_permissions.length">
+                     <div class="list-top-attribute">
+                        <h3> Task Permissions </h3>
+                     </div>
+                     <div class="table-data">
+                         <div class="table-responsive">
+                          <table class="table">
+                              <thead>
+                                   <tr>
+                                      <th>Team</th>
+                                      <th *ngFor="let task_header of taskData.task_detail.task_header">{{task_header}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  <ng-container *ngFor="let task_permissions of taskData.task_permissions">
+                                    <tr *ngIf="task_permissions.team_id">
+                                      <td>{{task_permissions.team_id.title}}</td>
+                                      <td *ngFor="let permission of task_permissions.permission">{{permission == "EDIT" ? "EDIT" : (permission == "READ" ? "READ ONLY" : "NO ACCESS")}}</td>
+                                    </tr>
+                                  </ng-container>
+                                </tbody>
+                            </table>
+                         </div>
+                     </div>
+                </div>
+            </div>
+	      </div>        
+  	</div>
+</div>

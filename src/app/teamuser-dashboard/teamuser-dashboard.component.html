@@ -1,0 +1,64 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+  <div class="inner-section object-comman object-comman-reverse after-login-section">
+      <div class="container">
+              <div class="dashborad-panel">
+                <!-- <app-businesssidemenu></app-businesssidemenu> -->
+
+                  <div class="dashborad-rightsider full-width">
+                       <h3>
+                        Dashboard
+                       </h3>
+                       
+                      <div class="row">
+                              <div class="col-lg-6">
+                                <div class="couting-dashboard">
+                                     <div>
+                                    <img src="assets/images/record.png" alt="pending-task"/>
+                                       <span>Records awaiting review</span>
+                                       <strong>{{totalPendingTasks}}</strong>
+                                     </div>
+                                  </div>
+                              </div>
+                              <div class="col-lg-6">
+                                <div class="couting-dashboard">
+                                      <div>
+                                    <img src="assets/images/completed-record.png" alt="completed-task"/>
+                                       <span>Records completed</span>
+                                       <strong>{{totalCompletedTasks}}</strong>
+                                       </div>
+                                  </div>
+                              </div>
+
+                              <!-- <div class="col-lg-4">
+                                <div class="couting-dashboard">
+                                      <div>
+                                    <img src="assets/images/average-time.png" alt="completed-task"/>
+                                       <span>Average Time</span>
+                                       <strong>{{average_time}}</strong>
+                                       </div>
+                                  </div>
+                              </div> -->
+                        </div>
+                        <div class="graph-content">
+                            <h3>Total Completed Each Day</h3>
+                            <canvas id="completedEachDay" height="400" style="width: 100%"></canvas>
+                        </div>
+                        <div class="graph-content">
+                            <h3>Total Jobs Outstanding</h3>
+                            <canvas id="outstandingJobs" height="400" style="width: 100%"></canvas>
+                        </div>
+                        <!-- <div class="graph-content">
+                            <h3>Completed task by team and team manager</h3>
+                              <img src="assets/images/graph-3.png" alt="graph"/>
+                        </div> -->
+                  </div>
+              </div>        
+      </div>
+  </div>

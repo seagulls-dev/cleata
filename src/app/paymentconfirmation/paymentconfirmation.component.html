@@ -1,0 +1,44 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section mvh dashborad-inner uploadpage">
+  	<div class="container">
+	    <div class="dashborad-panel">
+	        <app-businesssidemenu></app-businesssidemenu>
+	        <div class="dashborad-rightsider">
+	            <div id="content" class="text-center" *ngIf="!hasError && stripeData && stripe_callback=='success' && checkoutSuccess">
+	                <img class="mx-auto mb-8 inforicon" src="assets/images/exclamation-circle-duotone.svg" alt="img">
+	                <h1>Thanks for your payment!</h1>
+	                <p>We have processed your payment and your plan has been updated. Please click on Continue.</p>
+	                <div class="mt-16 d-flex justify-content-center">
+	                   <a [routerLink]="" (click)="goContinue()" class="bg-blue-800">Continue</a>
+	                </div>
+	            </div>
+
+	            <div id="content" class="text-center" *ngIf="!hasError && stripeData && stripe_callback=='cancel'">
+	                <img class="mx-auto mb-8 inforicon" src="assets/images/exclamation-circle-duotone.svg" alt="img">
+	                <h1>Oops, your payment was declined!</h1>
+	                <p>Please click on try again button to retry the payment.</p>
+	                <div class="mt-16 d-flex justify-content-center">
+	                   <a [routerLink]="" (click)="createuserstripesession()" class="bg-blue-800">Try Again </a>
+	                   <a [routerLink]="" (click)="goBack()" class="bg-gray-300 ml-3">Cancel</a>
+	                </div>
+	            </div>
+
+	            <div id="content" class="text-center" *ngIf="hasError">
+	                <img class="mx-auto mb-8 inforicon" src="assets/images/exclamation-circle-duotone.svg" alt="img">
+	                <h1>Oops!</h1>
+	                <p>{{errorMessage}}</p>
+	                <div class="mt-16 d-flex justify-content-center">
+	                   <a [routerLink]="['/dashboard']" class="bg-blue-800">Home</a>
+	                </div>
+	            </div>
+          	</div>
+	    </div>        
+  	</div>
+</div>

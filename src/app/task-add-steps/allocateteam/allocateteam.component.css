@@ -1,0 +1,25 @@
+.teamdfrm .list li.active::after {
+	top: 18px;
+	width: 5px;
+	height: 12px;
+	border: solid #38a169;
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+	border-radius: 0;
+	background-color: transparent;
+}
+
+
+.teamdfrm .list li.active {
+	background-color: #f6f6f6;
+
+}
+
+.is-invalid {
+    border-color: #dc3545;
+}
+
+.invalid-feedback {
+	color: #dc3545;
+	font-size: 80%;
+}

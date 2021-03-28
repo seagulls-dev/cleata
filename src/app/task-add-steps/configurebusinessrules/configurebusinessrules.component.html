@@ -1,0 +1,96 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section mvh dashborad-inner uploadpage">
+  	<div class="container">
+	    <div class="dashborad-panel">
+	        <app-businesssidemenu></app-businesssidemenu>
+	        <div class="dashborad-rightsider">
+	            <div id="content" *ngIf="taskData">
+				    <h1>We found {{total_rows}} rows</h1>
+				    <h3 class="mt-16 mb-6 opacity-25 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/conflictcolumnpermissions/'+task_id]"> <b>6.</b> Permission conflict management </a> </h3>
+				    <h3 class="mt-3 mb-6 opacity-50 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/reallocatetasks/'+task_id]"> <b>7.</b> Do you want to allow users to reallocate tasks? </a> </h3>
+				    <h3 class="mt-3 mb-6 opacity-75 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/wantconfigurebusinessrules/'+task_id]"> <b>8.</b> Do you want to configure business rules? </a> </h3>
+				    <h3 class="mt-3 mb-6 commanlsittecxt"> <b>9.</b> Configure business rules </h3>
+				    <p class="mb-3">Business rules allow you to assign teams to records based on conditions you set here. For example where Invoice Amount &gt; 1000 assign to Team B.</p>
+				    <p class="mb-3">You can create as many business rules as you like.</p>
+				    <p class="mb-3">Where you have business rules that may cross over one another for example where Column A = Projects and Column B &gt; 1000 as well as another rule that states where Column A = Projects, you can change the order in which they are processed by dragging the rules from top to bottom on the right hand side.</p>  
+
+				    <div class="mt-16">
+				    	<form [formGroup]="taskRuleForm" (ngSubmit)="saveNewBusinessRule()" style="padding: 0;">
+					    	<div class="row">
+					    		<div class="col-md-6">
+					    			<p class="text-blue-700 font-semibold">Title</p>
+					        		<input placeholder="Give your rule a title..." type="text" class="rounded-lg shadow-sm shadow-input mt-3" formControlName="rule_name" [ngClass]="{ 'is-invalid': submitted && f.rule_name.errors }">
+					    		</div>
+
+					    		<div class="col-md-6">
+					    			<p class="text-blue-700 font-semibold">Teams</p>
+					    			<ng-select2 [options]="{multiple: true, placeholder: 'Select team'}" [data]="teamsData" class="custom-select-2 is-invalid" formControlName="team_ids" [ngClass]="{ 'is-invalid': submitted && f.team_ids.errors }"></ng-select2>
+					    		</div>
+					    	</div>
+					        
+					    	<ng-container *ngFor="let conditions of t.controls; let r = index">
+						        <div class="mt-8" [formGroup]="conditions">
+						            <p class="text-blue-700 font-semibold">Configuration</p>
+
+						            <div class="d-md-flex align-items-center space-x-3 mt-3 wherediv">
+						                <p class="self-center text-sm text-gray-600">WHERE</p>
+						                <select class="selectcidcustom" formControlName="header_index" *ngIf="taskHeaderStepData" [ngClass]="{ 'is-invalid': submitted && conditions.controls.header_index.errors }">
+						                	<option value="">Select column</option>
+				                            <option *ngFor="let taskHeaderData of taskHeaderStepData.data;let h=index;" [value]="h">{{taskHeaderData.column_name}}</option>
+				                        </select>
+
+				                        <select class="selectcidcustom" formControlName="operator" [ngClass]="{ 'is-invalid': submitted && conditions.controls.operator.errors }">
+				                        	<option value="">Select condition</option>
+						                    <option value="=">IS EQUAL TO</option>
+						                    <option value="!=">IS NOT EQUAL TO</option>
+						                    <option value="=">IS LIKE</option>
+						                    <option value="!=">IS NOT LIKE</option>
+						                    <option value="%">CONTAINS</option>
+						                    <option value="!%">DOES NOT CONTAIN</option>
+						                    <option value="null">IS EMPTY</option>
+						                    <option value="!null">IS NOT EMPTY</option>
+						                    <option value="<">IS LESS THAN</option>
+						                    <option value="<=">IS LESS THAN EQUAL TO</option>
+						                    <option value=">">IS GREATER THAN</option>
+						                    <option value=">=">IS GREATER THAN EQUAL TO</option>
+						                </select>
+						                <input placeholder="Value..." type="text" class="shadow-sm border border-gray-200" formControlName="condition_value" [ngClass]="{ 'is-invalid': submitted && conditions.controls.condition_value.errors }"> 
+						                <img src="assets/images/{{!r ? 'plus-solid.svg' : 'miunus.png'}}" alt="img" (click)="addRemoveConditionData((r ? 0 : 1), r)">
+						            </div>
+						        </div>
+						    </ng-container>
+
+					        <button class="mt-12 mb-3 bg-gray-300 btn border-radius0">Save Rule</button>
+					    </form>
+
+					    <ng-container *ngIf="businessRules.length">
+					        <h2 class="text-xl mt-12 mb-4 maincolor">Rule Processing Order</h2>
+					        <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+						        <div class="shadow-sm rounded-lg projectmove example-list" *ngFor="let businessRule of businessRules;let br=index;" cdkDrag>
+						            <figure><img src="assets/images/ellipsis-v.svg" alt="img"> </figure>
+						            <div class="projectdata">
+						                <p class="text-base text-blue-800">{{businessRule.rule_name}}</p>
+						                <p class="text-blue-700"><span *ngFor="let team_ids of businessRule.team_ids;let t=index;">{{t ? ", " : ""}}{{getTeamNamebyId(team_ids)}}</span></p>
+						                <p class="text-gray-600 text-sm">WHERE <span [innerHTML]="getConditionString(br)"></span></p>
+						            </div>
+						            <figure (click)="removeNewBusinessRule(br)"><img src="assets/images/close1.png" alt="img" class="cross-image"> </figure>
+						        </div>
+						    </div>
+				        </ng-container>
+				    </div>
+
+				    <div class="w-full d-sm-flex mt-16">
+				        <a [routerLink]="" (click)="saveConfigureBusinessRules()" class="bg-blue-800">Next </a>
+				    </div>
+				</div>
+          	</div>
+	    </div>        
+  	</div>
+</div>

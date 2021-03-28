@@ -1,0 +1,8 @@
+.margin-bottom-50 {
+	margin-bottom: 50px;
+}
+
+.isdisabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}

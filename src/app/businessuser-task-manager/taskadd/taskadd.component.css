@@ -1,0 +1,41 @@
+.uploadpage .dropzone {
+	position: relative;
+}
+.uploadpage .dropzone input {
+	opacity:0;
+	width:100%;
+	height:100%;
+	cursor: pointer;
+}
+
+.uploadpage .dropzone div {
+	position: absolute;
+	pointer-events: none;
+}
+
+.progress-div {
+	position: absolute;
+	width: 40%;
+}
+
+.progress-div .progress {
+ 	max-width:100%;
+ 	margin:0px auto 20px;
+ 	text-align:center;
+ 	transition: all .5s;
+ 	-webkit-transition: all .5s;
+    width: 100%;
+    border-radius: 20px;
+    padding: 3px 5px;
+    height: 28px;
+}
+
+.progress-div .progress .progress-bar{
+	border-radius: 20px;
+    height: 22px;
+    background-color: #2b54a3;
+}
+
+.progress-div h3 {
+	margin-bottom: 20px;
+}

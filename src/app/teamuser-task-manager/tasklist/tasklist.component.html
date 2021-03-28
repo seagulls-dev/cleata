@@ -1,0 +1,89 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section object-comman object-comman-reverse after-login-section">
+  	<div class="container">
+	      <div class="dashborad-panel">
+	        <!-- <app-businesssidemenu></app-businesssidemenu> -->
+
+	          <div class="dashborad-rightsider full-width">
+                             
+                 <div class="edit-profile-set manager-teamuserlist-page">
+                     <div class="list-top-attribute">
+                        <h3> Manage Jobs </h3>
+                        <div class="rightattributepanel">
+                        	<div class="attributesearch">
+                            	<input type="text" class="form-control" placeholder="Search task title name" [(ngModel)]="searchKeyword" (ngModelChange)="searchByKeyword()">
+                                <img src="assets/images/black-search.png" alt="img">
+                            </div>
+                        </div>
+                     </div>
+                     <div class="table-data">
+                         <div class="table-responsive">
+                         	<table class="table">
+                            	<thead>
+                                   <tr>
+                                      <th class="text-center">Start Date</th>
+                                      <th class="text-center">End Date</th>
+                                      
+                                      <!-- <th class="text-center">Filename</th> -->
+                                      <th>Created at</th>
+                                      <!-- <th class="text-center">Status</th> -->
+                                      <th class="text-center">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  <ng-container *ngIf="tasksData && tasksData.length">
+                                  	<tr *ngFor="let taskData of tasksData;let i=index;">
+                                      	
+                                          <td>{{taskData.start_date | date: "dd MMM yyyy"}}</td>
+                                      <td>{{taskData.end_date | date: "dd MMM yyyy"}}</td>
+                                          <!-- <td class="text-center"><span class="name-user">{{taskData.file_name}}</span></td> -->
+                                          <td>{{taskData.created_at | date: httpClientService.defaltDate}}</td>
+                                          <!-- <td class="text-center"><img [src]="'assets/images/'+(taskData.status ? 'green' : 'red')+'-status.png'" alt="img"></td> -->
+                                          <td>
+                                          	<div class="action">
+                                          		<a [routerLink]="['/tasks/view/'+taskData._id]"><img src="assets/images/view.png" alt="img"></a>
+                                          	</div>
+                                          </td>
+                                      </tr>
+                                    </ng-container>
+
+                                    <ng-container *ngIf="!(tasksData && tasksData.length)">
+                                      <tr>
+                                        <td colspan="6" class="text-center">No record found!</td>
+                                      </tr>
+                                    </ng-container>
+                                </tbody>
+                            </table>
+                         </div>
+                         <!-- <div class="table-show-pagination">
+                         	<div class="show-item">
+                            	<span>Page {{activePage}} of {{pageCount}}, showing {{currentCount}} records out of {{count}} total</span>
+                            </div>
+                            <ul class="pagination">
+                              <li class="page-item {{!prevPage?'disabled':''}}">
+                                <a [routerLink]="" class="page-link pageprev" (click)="gotoPrevious()">Prev</a>
+                              </li>
+
+                              <li *ngFor="let page of pageArray;let i=index;" class="page-item">
+                                <a [routerLink]="" class="page-link {{activePage==page ? 'active' : ''}}" (click)="gotoPage(i+1)">{{page}}</a>
+                              </li>
+
+                              <li class="page-item {{!nextPage?'disabled':''}}">
+                                <a [routerLink]="" class="page-link pagenext" (click)="gotoNext()">Next</a>
+                              </li>
+						                </ul>
+                         </div>    -->
+                     </div>
+                        
+                </div>
+            </div>
+	      </div>        
+  	</div>
+</div>

@@ -1,0 +1,7 @@
+<div class="banner-section inner-banner-section"></div>
+<div class="inner-section object-comman contact-page privacy-policy-o min-set-height">
+	<div class="container" *ngIf="cmsPageData">
+		<h1>{{cmsPageData.name}}</h1>
+		<div [innerHTML]="cmsPageData.content"></div>
+	</div>
+</div>

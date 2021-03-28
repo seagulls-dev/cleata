@@ -1,0 +1,134 @@
+<!--banner start-->
+<div class="banner-section">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="banner-content-box">
+                    <h1>The data elephant in the room.</h1>
+                    <p>We get it, datasets with a seemingly never ending list of records to review are always the thing that gets put off.</p>
+                    <a href="javascript:void()" class="btn custom-btn custom-solid-btn"> Learn more <i
+                            class="fa fa-angle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="banner-right-box">
+                    <figure>
+                        <div class="ripple-anim"><img src="assets/images/banner.jpg" alt="banner" class="hover-effect" /></div>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="lines">
+        <div class="line"></div>
+
+    </div>
+
+    <div class="scroll-down">
+        <a [routerLink]='"."' [fragment]="'howitwork'">
+            <img src="assets/images/down-scroll.png" alt="scroll-down">
+            Scroll down
+        </a>
+    </div>
+
+</div>
+<!--banner end-->
+
+<!--what is cleata start-->
+<div id="whatiscleata" *ngIf="httpClientService.homePageData">
+    <div [outerHTML]="httpClientService.homePageData.whatiscleata.content"></div>
+</div>
+<!--what is cleata end-->
+
+<!--how it work start-->
+<div id="howitwork" *ngIf="httpClientService.homePageData">
+    <div [outerHTML]="httpClientService.homePageData.howitworks.content"></div>
+</div>
+<!--how it work end-->
+
+<!--cleata feature start-->
+<div id="cleatafeature" *ngIf="httpClientService.homePageData">
+    <div [outerHTML]="httpClientService.homePageData.cleatafeature.content"></div>
+</div>
+<!--cleata feature end-->
+
+<!---pricing start-->
+<div class="pricing-section" id="pricing">
+    <div class="container">
+        <div class="page-heading text-center">
+            <img src="assets/images/heading-object.png" alt="heading-object" />
+            <h2>Our Plans</h2>
+            <p>Our plans provide services ranging from entry level needs up to enterprise class provisions and everything in between.</p>
+        </div>
+        <div class="pricing-plan text-center">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="monthly-tab" data-toggle="tab" href="#monthlytab"
+                        role="tab">Monthly</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link yeaeractive yearofferset" id="year-tab" data-toggle="tab" href="#yeartab"
+                        role="tab">Yearly <span>10% off</span></a>
+
+                </li>
+ 
+            </ul>
+            
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="monthlytab" role="tabpanel">
+                    <div class="row">
+                        <ng-container *ngFor="let plan of httpClientService.homePagePlans">
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="price-plan-content hover-effect">
+                                    <div class="price-plan-rate" *ngIf="plan.type!='support'">
+                                        <sup>£</sup>{{plan.month_amount}} <sub>/month</sub>
+                                    </div>
+                                    <div class="price-plan-rate" *ngIf="plan.type=='support'">
+                                        Contact Us
+                                    </div>
+                                    <div class="price-plan-heading">
+                                        {{plan.title}}
+                                    </div>
+                                    <ul class="plan-list" [innerHTML]="plan.description"></ul>
+                                    <div class="plan-btn">
+                                        <a [routerLink]="['/signup/month/'+plan._id]" class="btn custom-btn" *ngIf="plan.type!='support'">Sign up</a>
+                                        <a [routerLink]="['/contactus']" class="btn custom-btn" *ngIf="plan.type=='support'">Contact Us</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+                
+                <div class="tab-pane fade" id="yeartab" role="tabpanel">
+                    <div class="row">
+                        <ng-container *ngFor="let plan of httpClientService.homePagePlans">
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="price-plan-content hover-effect">
+                                    <div class="price-plan-rate" *ngIf="plan.type!='support'">
+                                        <sup>£</sup>{{plan.year_amount/12}} <sub>/month</sub>
+                                    </div>
+                                    <div class="price-plan-rate" *ngIf="plan.type=='support'">
+                                        Contact Us
+                                    </div>
+                                    <div class="price-plan-heading">
+                                        {{plan.title}}
+                                    </div>
+                                    <ul class="plan-list" [innerHTML]="plan.description"></ul>
+                                    <div class="plan-btn">
+                                        <a [routerLink]="['/signup/year/'+plan._id]" class="btn custom-btn" *ngIf="plan.type!='support'">Sign up</a>
+                                        <a [routerLink]="['/contactus']" class="btn custom-btn" *ngIf="plan.type=='support'">Contact Us</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!---pricing end --->

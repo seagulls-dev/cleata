@@ -1,0 +1,68 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section mvh dashborad-inner select-plan">
+	<div class="container">
+		<div class="dashborad-panel">
+			<app-businesssidemenu></app-businesssidemenu>
+			<div class="dashborad-rightsider">
+				<div id="content" class="selectplan">
+                    <h1>Select a plan</h1>
+                    <p>If you want to process all the rows on your dataset, please select a plan that at least meets the minimum number of rows you have.</p>
+                    <div class="pricing-plan text-center mt-16">
+			            <ul class="nav nav-tabs" id="myTab" role="tablist" *ngIf="!userSubscription || userSubscription.type=='month' || userSubscription.amount==0">
+			                <li class="nav-item">
+			                    <a class="nav-link active" id="monthly-tab" data-toggle="tab" href="#monthlytab"
+			                        role="tab">Monthly</a>
+			                </li>
+			                <li class="nav-item">
+			                    <a class="nav-link yeaeractive yearofferset" id="year-tab" data-toggle="tab" href="#yeartab"
+			                        role="tab">Yearly <span>10% off</span></a>
+
+			                </li>
+			 
+			            </ul>
+			            
+			            <div class="tab-content" id="myTabContent">
+			                <div class="tab-pane fade show active" id="monthlytab" role="tabpanel" *ngIf="!userSubscription || userSubscription.type=='month' || userSubscription.amount==0">
+			                	<div class="d-lg-flex space-x-5 selectplancontnetn">
+			                    	<ng-container *ngFor="let plan of plans.month_plan;let i=index;">
+					                 	<div class="pt-12 rounded-lg shadow-sm border-2" (click)="selectPlan(i, 'month')" [ngClass]="{'active': selectedPlan.plan_index === i && selectedPlan.plan_type == 'month'}">
+					                    	<h3 class="text-blue-700">{{plan.title}}</h3>
+					                        <span *ngIf="plan.type != 'support'"><span class="text-blue-800 text-5xl font-medium">£{{plan.month_amount}}</span> <span class="text-gray-500 text-lg">/ monthly</span></span>
+					                        <span *ngIf="plan.type == 'support'"><span class="text-blue-800 text-5xl font-medium">Contact Us</span></span>
+					                        <ul [innerHTML]="plan.description"></ul>
+					                    </div>
+					                </ng-container>
+				                </div>
+			                </div>
+
+			                <div class="tab-pane" id="yeartab" role="tabpanel" [ngClass]="{'active': userSubscription && userSubscription.type=='year' && userSubscription.amount}">
+			                	<div class="d-lg-flex space-x-5 selectplancontnetn">
+			                    	<ng-container *ngFor="let plan of plans.year_plan;let i=index;">
+					                 	<div class="pt-12 rounded-lg shadow-sm border-2" (click)="selectPlan(i, 'year')" [ngClass]="{'active': selectedPlan.plan_index === i && selectedPlan.plan_type == 'year'}">
+					                    	<h3 class="text-blue-700">{{plan.title}}</h3>
+					                        <span><span class="text-blue-800 text-5xl font-medium">£{{(plan.year_amount / 12)}}</span> <span class="text-gray-500 text-lg">/ monthly</span></span>
+					                        <ul [innerHTML]="plan.description"></ul>
+					                    </div>
+					                </ng-container>
+				                </div>
+			                </div>
+			            </div>
+
+			            <div class="mt-16 d-sm-flex justify-content-between plansummarybtn">
+                            <a [routerLink]="" (click)="addUpdatePlan()" class="bg-blue-800" [ngClass]="{'isdisabled': selectedPlan.plan_index == null || selectedPlan.plan_type == null}">{{selectedPlan.type && selectedPlan.type == "support" ? "Contact Us" : "Confirm Upgrade"}} </a>
+                            <a href="#" class="bg-gray-300 ml-3">Cancel, go back</a>
+                        </div>
+			        </div>
+                    
+				</div>
+			
+		</div>
+	</div>
+</div>

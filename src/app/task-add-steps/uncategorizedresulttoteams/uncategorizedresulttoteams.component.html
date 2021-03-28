@@ -1,0 +1,85 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section mvh dashborad-inner uploadpage">
+  	<div class="container">
+	    <div class="dashborad-panel">
+	        <app-businesssidemenu></app-businesssidemenu>
+	        <div class="dashborad-rightsider">
+	            <div id="content" *ngIf="taskData">
+                    <h1>We found {{total_rows}} rows</h1>
+                    <h3 class="mt-16 mb-6 opacity-25 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/wantconfigurebusinessrules/'+task_id]"> <b>8. </b> Do you want to configure business rules? </a> </h3>
+                    <h3 class="mt-3 mb-6 opacity-50 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/configurebusinessrules/'+task_id]"> <b>9. </b> Configure business rules </a> </h3>
+                    <h3 class="mt-3 mb-6 opacity-75 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/reviewmatchingdata/'+task_id]"> <b>10. </b> Review matching data</a> </h3>
+                    <h3 class="mt-3 mb-6 commanlsittecxt"> <b>11.</b> Would you like to assign the uncategorized results to teams to deal with? </h3>
+                    <p class="mb-4">If you select No, these will be placed in a separate datafile for you to download, you can always review the data and add it back into Cleata with new business rules later.</p>
+                    <p class="mb-5">If you select Yes, then the uncategorized data will be allocated to the teams of your choice. You can also weight the % split in case you want one team to handle more uncategorized data than the others.</p>
+                    
+                    <form [formGroup]="uncategorizedTeamForm" (ngSubmit)="saveUncategorizedTeam()" style="padding: 0;">
+	                    <div class="d-md-flex halfqual">
+		                    <div class="w-1/2">
+	                    		<div class="mdc-form-field">
+	                                <div class="md-radio">
+	                                    <input id="1" value="1" type="radio" formControlName="boolean_question" (click)="setDefualtValueCalculation()"> 
+	                                    <label class="text-gray-600" for="1">
+	                                    	<span class="inline-block ml-2">Yes</span>
+	                                    </label>
+	                                </div>
+	                                <div class="md-radio">
+	                                    <input id="0" value="0" type="radio" formControlName="boolean_question" (click)="setDefualtValueCalculation()">
+	                                    <label class="text-gray-600" for="0">
+		                                    <span class="inline-block ml-2">No</span>
+	                                    </label>
+	                                </div>
+	                            </div>
+	                            <div class="mt-12" *ngIf="uncategorizedTeamForm.value.boolean_question=='1'">
+									<h3 class="text-xl">Configuration</h3>
+
+									<div class="mdc-form-field">
+		                                <div class="md-radio">
+		                                    <input id="percent" value="percent" type="radio" formControlName="type" (click)="setDefualtValueCalculation()"> 
+		                                    <label class="text-gray-600" for="percent">
+		                                    	<span class="inline-block ml-2">Divide by percentage</span>
+		                                    </label>
+		                                </div>
+		                                <div class="md-radio">
+		                                    <input id="record" value="record" type="radio" formControlName="type" (click)="setDefualtValueCalculation()">
+		                                    <label class="text-gray-600" for="record">
+			                                    <span class="inline-block ml-2">Divide by number of records</span>
+		                                    </label>
+		                                </div>
+		                            </div>
+
+									<ul class="teamdivid">
+										<li *ngFor="let teams_data of t.controls; let r = index">
+											<label class="text-gray-600" [formGroup]="teams_data">{{teams_data.value.team_name}}
+												<input type="number" class="shadow-input rounded-lg mt-3" [ngClass]="{ 'is-invalid': submitted && teams_data.controls.value.errors }" formControlName="value">
+											</label>
+										</li>
+									</ul>
+	                            </div>
+		                    </div>
+
+		                    <div class="w-1/2">
+		                    	<div class="overinnersection shadow-sm rounded-lg">
+		                        	<div class="d-sm-flex justify-content-between py-1"><p class="text-blue-900">Total Matched</p><p class="text-gray-600 self-center text-sm">{{matchingdataanalytics?.total_match_rows}} records</p></div>
+		                            <div class="d-sm-flex justify-content-between py-1"><p class="text-blue-900">Total Number of Records</p><p class="text-gray-600 self-center text-sm">{{matchingdataanalytics?.total_Rows}} records</p></div>
+		                            <div class="d-sm-flex justify-content-between py-1"><p class="text-blue-900">Total Uncategorised</p><p class="text-gray-600 self-center text-sm">{{matchingdataanalytics?.tota_unmatch_rows}} records</p></div>
+		                        </div>
+		                    </div>
+	                    </div>
+	                    
+	                    <div class="w-full mt-16">
+	                     	<button class=" bg-blue-800">Next</button>
+	                    </div>
+                    </form>
+                </div>
+          	</div>
+	    </div>        
+  	</div>
+</div>

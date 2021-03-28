@@ -1,0 +1,40 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section mvh dashborad-inner uploadpage">
+  	<div class="container">
+	    <div class="dashborad-panel">
+	        <app-businesssidemenu></app-businesssidemenu>
+	        <div class="dashborad-rightsider">
+	            <div id="content" *ngIf="taskData">
+	                <h1>We found {{total_rows}} rows</h1>
+	                <!-- <ng-container> -->
+	                	<h3 class="mt-16 mb-6 commanlsittecxt"> <b>1.</b> Does your first row contain headings?</h3>
+		                <div class="w-full relative">
+		                 	<div class="table-responsive">
+		                        <table class="shadow-sm table">
+		                    		<tbody>
+			                            <tr *ngFor="let result of taskData.task_details.result | slice:0:3;let i=index;">
+			                            	<td *ngFor="let total_column of total_columns_array; let j=index">{{httpClientService.setDataAccording(result.task_modified_data[total_column])}}</td>
+			                            </tr>
+		                        	</tbody>
+		                        </table>
+		                        <div class="gradient-fade-out"></div>
+		                    </div>
+		                </div>
+		                <div class="w-full d-sm-flex mt-16">
+		                 	<a [routerLink]="" (click)="gotoYes()" class="bg-blue-800">Yes </a>
+		                    <a [routerLink]="" (click)="gotoNo()" class="ml-3 bg-gray-300">No</a>
+		                </div>
+	                <!-- </ng-container> -->
+	                
+	            </div>
+          	</div>
+	    </div>        
+  	</div>
+</div>

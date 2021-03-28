@@ -1,0 +1,166 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+
+
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section object-comman object-comman-reverse after-login-section">
+    <div class="container">
+            <div class="dashborad-panel">
+                <app-businesssidemenu *ngIf="userData.role=='business_user'"></app-businesssidemenu>
+                <div class="dashborad-rightsider" [ngClass]="{'full-width': userData.role=='team_user'}">
+                     
+                     <div class="edit-profile-set">
+                        <h3> Profile </h3>
+                            
+                            <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+                                <div class="profile-change-section text-center">
+                                    <figure><img [src]="profileForm.value.profile_picture ? httpClientService.imageUrl + profileForm.value.profile_picture : 'assets/images/no-img.png'" alt="profile"></figure>
+                                    
+                                    <div class="change-profile-photo">
+                                        <input type="file" ng2FileSelect [uploader]="uploader">
+                                        <span> <img src="assets/images/camera.png" alt="camers"> Add profile photo </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                
+
+                                <div class="col-lg-12">
+                                    <span class="form-heading">Fill your general information</span>
+                                </div>
+                                    
+                                
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                         <div class="append-icon" [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }">            
+                                            <input type="text" class="form-control" placeholder="First Name" formControlName="first_name">
+                                             <img src="assets/images/user.png" alt="user">
+                                         </div>
+                                         <div *ngIf="submitted && f.first_name.errors" class="invalid-feedback">
+                                            <div *ngIf="f.first_name.errors.required">First name is required</div>
+                                            <div *ngIf="f.first_name.errors.maxlength">First name should be max {{f.first_name.errors.maxlength.requiredLength}} characters</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                         <div class="append-icon" [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }">            
+                                            <input type="text" class="form-control" placeholder="Last Name" formControlName="last_name">
+                                             <img src="assets/images/user.png" alt="user">
+                                         </div>
+                                         <div *ngIf="submitted && f.last_name.errors" class="invalid-feedback">
+                                            <div *ngIf="f.last_name.errors.required">Last name is required</div>
+                                            <div *ngIf="f.last_name.errors.maxlength">Last name should be max {{f.last_name.errors.maxlength.requiredLength}} characters</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                         <div class="append-icon" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">            
+                                            <input type="email" class="form-control" placeholder="Email" formControlName="email" disabled>
+                                             <img src="assets/images/email.png" alt="email">
+                                         </div>  
+
+                                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                            <div *ngIf="f.email.errors.required">Email is required</div>
+                                            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                         <div class="append-icon" [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }">            
+                                            <input type="number" class="form-control" placeholder="Mobile" formControlName="mobile">
+                                             <img src="assets/images/phone-o.png" alt="Mobile">
+                                         </div>
+                                        <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                                            <div *ngIf="f.mobile.errors.required">Mobile number is required</div>
+                                            <div *ngIf="f.mobile.errors.range && f.mobile.errors.range.requiredMaxLength">Mobile number should be max {{f.mobile.errors.range.requiredMaxLength}} digit</div>
+                                            <div *ngIf="f.mobile.errors.range && f.mobile.errors.range.requiredMinLength">Mobile number should be min {{f.mobile.errors.range.requiredMinLength}} digit</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6" *ngIf="userData.role && userData.role=='team_user'">
+                                    <div class="form-group">
+                                         <div class="append-icon" [ngClass]="{ 'is-invalid': submitted && f.job_title.errors }">
+                                            <input type="text" class="form-control" placeholder="Job title" formControlName="job_title">
+                                            <img src="assets/images/job-title-o.png" alt="user">
+                                         </div>
+                                        <div *ngIf="submitted && f.job_title.errors" class="invalid-feedback">
+                                            <div *ngIf="f.job_title.errors.required">Job title is required</div>
+                                            <div *ngIf="f.job_title.errors.maxlength">Job title should be max {{f.job_title.errors.maxlength.requiredLength}} characters</div>
+                                        </div> 
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6" *ngIf="userData.role && userData.role=='business_user'">
+                                    <div class="form-group">
+                                         <div class="append-icon" [ngClass]="{ 'is-invalid': submitted && f.company_name.errors }">            
+                                            <input type="text" class="form-control" placeholder="Company name" formControlName="company_name">
+                                            <img src="assets/images/company-o.png" alt="user">
+                                         </div>
+                                        <div *ngIf="submitted && f.company_name.errors" class="invalid-feedback">
+                                            <div *ngIf="f.company_name.errors.required">Company name is required</div>
+                                            <div *ngIf="f.company_name.errors.maxlength">Company name should be max {{f.company_name.errors.maxlength.requiredLength}} characters</div>
+                                        </div> 
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6" *ngIf="userData.role && userData.role=='business_user'">
+                                    <div class="form-group">
+                                         <div class="append-icon profile-select2" [ngClass]="{ 'is-invalid': submitted && f.country.errors }">            
+                                            <ng-select2 formControlName="country" [options]="{multiple: false}" [placeholder]="'Select location'" [data]="countiresData"></ng-select2>
+                                         </div>
+                                        <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
+                                            <div *ngIf="f.country.errors.required">Location is required</div>
+                                        </div> 
+                                    </div>
+                                </div>
+
+
+                                <!-- <div class="col-sm-12">
+                                    <span class="form-heading">Fill your password</span>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-4">
+                                         <div class="append-icon">            
+                                            <input type="password" class="form-control" placeholder="Password">
+                                             <img src="assets/images/password.png" alt="password">
+                                         </div>  
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-4">
+                                         <div class="append-icon">            
+                                            <input type="password" class="form-control" placeholder="Confirm password">
+                                             <img src="assets/images/password.png" alt="password">
+                                         </div>  
+                                    </div>
+                                </div> -->
+                                <div class="col-lg-12" *ngIf="userData && userData.role == 'business_user' && userData.plan_type != 'free'">
+                                    <p>Do you want to cancel your currrent subscription? <a [routerLink]="['/contactus']">Click here</a> to send request for cancel your current subscription.</p>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group text-center">
+                                        <button type="submit" class="btn submit-btn">
+                                           Update profile
+                                           <i class="fa fa-angle-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>        
+    </div>
+</div>

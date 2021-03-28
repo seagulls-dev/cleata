@@ -1,0 +1,86 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section object-comman object-comman-reverse after-login-section">
+  	<div class="container">
+	      <div class="dashborad-panel">
+	        <app-businesssidemenu></app-businesssidemenu>
+
+	          <div class="dashborad-rightsider">
+                             
+                <div class="edit-profile-set manager-teamuserlist-page">
+                     <div class="list-top-attribute">
+                        <h3> Manage Uncategorized Datasets </h3>
+                        <div class="rightattributepanel">
+                        	<div class="attributesearch">
+                            	<input type="text" class="form-control" placeholder="Search task file name" [(ngModel)]="searchKeyword" (ngModelChange)="searchByKeyword()">
+                                <img src="assets/images/black-search.png" alt="img">
+                            </div>
+                            <!-- <a [routerLink]="['/business-user/tasks/add']" class="btn blue-custom-btn">+ ADD DATASETS</a> -->
+                        </div>
+                     </div>
+                     <div class="table-data">
+                         <div class="table-responsive">
+                         	<table class="table">
+                            	<thead>
+                                   	<tr>
+										<th class="text-center">File Name</th>
+										<th class="text-center">Total Uncategorized Records</th>
+										<th>Created at</th>
+										<th class="text-center">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+									<ng-container *ngIf="tasksData && tasksData.length">
+										<tr *ngFor="let taskData of tasksData;let i=index;">
+											<td class="text-center"><span class="name-user">{{taskData.file_name}}</span></td>
+											<td class="text-center">{{taskData.total_uncategorized_records}}</td>
+											<td>{{taskData.created_at | date: httpClientService.defaltDate}}</td>
+											<td>
+											<div class="action">
+												<a [routerLink]="['/business-user/uncategorizedtasks/view/'+taskData._id]"><img src="assets/images/view.png" alt="img"></a>
+											</div>
+											</td>
+										</tr>
+									</ng-container>
+
+									<ng-container *ngIf="!(tasksData && tasksData.length)">
+										<tr>
+											<td colspan="6" class="text-center">No record found!</td>
+										</tr>
+									</ng-container>
+                                </tbody>
+                            </table>
+                         </div>
+                         <div class="table-show-pagination">
+                         	<div class="show-item">
+                            	<span>Page {{activePage}} of {{pageCount}}, showing {{currentCount}} records out of {{count}} total</span>
+                            </div>
+                            <ul class="pagination" style="overflow: auto;">
+								<li class="page-item {{!prevPage?'disabled':''}}">
+									<a [routerLink]="" class="page-link pageprev" (click)="gotoPrevious()">Prev</a>
+								</li>
+
+								<ul class="pagination" style="overflow: auto;border: none;">
+									<li *ngFor="let page of pageArray;let i=index;" class="page-item">
+										<a [routerLink]="" class="page-link {{activePage==page ? 'active' : ''}}"
+											(click)="gotoPage(i+1)">{{page}}</a>
+									</li>
+								</ul>
+
+								<li class="page-item {{!nextPage?'disabled':''}}">
+									<a [routerLink]="" class="page-link pagenext" (click)="gotoNext()">Next</a>
+								</li>
+							</ul>
+                         </div>   
+                     </div>
+                </div>
+            </div>
+	      </div>        
+  	</div>
+</div>

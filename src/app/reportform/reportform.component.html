@@ -1,0 +1,130 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section object-comman object-comman-reverse after-login-section">
+  	<div class="container">
+	      <div class="dashborad-panel">
+	        <app-businesssidemenu></app-businesssidemenu>
+
+	         <div class="dashborad-rightsider">
+                <div class="edit-profile-set add-teamuserlist-page">
+                     <div class="list-top-attribute">
+                        <h3> Reports </h3>
+                        <!-- <div class="rightattributepanel">
+                        	
+                           <a [routerLink]="['/teams']" class="btn blue-custom-btn backbtn"> <i class="fa fa-long-arrow-left"></i> Back </a>
+                        </div> -->
+                     </div>
+                     <div class="viewmanagercontent">
+                        <form [formGroup]="reportForm" (ngSubmit)="getReport()">
+                          <div class="row">
+                          	<div class="col-lg-12">
+                            	<div class="addlableinformation">
+                                	<label class="custom-label">Report For </label>
+                                    <div class="form-group">
+                                    	<select class="form-control without-append-input" formControlName="report_for" [ngClass]="{ 'is-invalid': submitted && f.report_for.errors }">
+                                    		<option value="">Select report for</option>
+                                    		<option value="team">Teams</option>
+                                    		<option value="user">Team Users</option>
+                                    	</select>
+                                        <div *ngIf="submitted && f.report_for.errors" class="invalid-feedback">
+                                          <div *ngIf="f.report_for.errors.required">Report for is required</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                            	<div class="addlableinformation">
+                                	<label class="custom-label">Report Type </label>
+                                    <div class="form-group">
+                                    	<select class="form-control without-append-input" formControlName="report_type" [ngClass]="{ 'is-invalid': submitted && f.report_type.errors }">
+                                    		<option value="">Select report type</option>
+                                    		<option value="all">All datasets</option>
+                                    		<option value="pending">Current running datasets</option>
+                                    	</select>
+                                        <div *ngIf="submitted && f.report_type.errors" class="invalid-feedback">
+                                          <div *ngIf="f.report_type.errors.required">Report type is required</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                            	<div class="addlableinformation">
+                                	<label class="custom-label">Dataset </label>
+                                    <div class="form-group">
+                                    	<select class="form-control without-append-input" formControlName="task_id" [ngClass]="{ 'is-invalid': submitted && f.task_id.errors }">
+                                    		<option value="">All datasets</option>
+                                    		<option *ngFor="let dataset of datasets;" value="{{dataset._id}}">{{dataset.file_name}}</option>
+                                    	</select>
+                                        <div *ngIf="submitted && f.task_id.errors" class="invalid-feedback">
+                                          <div *ngIf="f.task_id.errors.required">Dataset is required</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                            	<div class="addlableinformation">
+                                	<label class="custom-label">Select Start Date and End Date </label>
+                                    <div class="form-group">
+                                    	<mat-form-field appearance="fill">
+											  <!-- <mat-label>Enter a date range</mat-label> -->
+											  <mat-date-range-input [max]="min_date" [rangePicker]="picker">
+											    <input matStartDate formControlName="start_date" placeholder="Start date">
+											    <input matEndDate formControlName="end_date" placeholder="End date">
+											  </mat-date-range-input>
+											  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+											  <mat-date-range-picker #picker></mat-date-range-picker>
+
+											  <!-- <mat-error *ngIf="range.controls.start_date.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+											  <mat-error *ngIf="range.controls.end_date.hasError('matEndDateInvalid')">Invalid end date</mat-error> -->
+										</mat-form-field>
+
+										<!-- <p>Selected range: {{range.value | json}}</p> -->
+                                        <div *ngIf="submitted && (f.start_date.errors || f.end_date.errors)" class="invalid-feedback" style="display: block;">
+                                          <div *ngIf="(f.start_date.errors?.matDatepickerParse || f.end_date.errors?.matDatepickerParse)">Please enter valid start date and end date</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                            	<div class="addlableinformation">
+                                	<label class="custom-label">File Type </label>
+                                    <div class="form-group">
+                                    	<select class="form-control without-append-input" formControlName="file_type" [ngClass]="{ 'is-invalid': submitted && f.file_type.errors }">
+                                    		<option value="excel">Excel</option>
+                                    		<option value="csv">CSV</option>
+                                    	</select>
+                                        <div *ngIf="submitted && f.file_type.errors" class="invalid-feedback">
+                                          <div *ngIf="f.file_type.errors.required">File type is required</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-sm-12">
+                              <div class="form-group text-center">
+                                <button type="submit" class="btn submit-btn">
+                                   Submit
+                                   <i class="fa fa-angle-right"></i>
+                                </button>
+                              </div>
+                            </div>
+                            
+                          </div>
+                        </form>
+                     </div>
+                        
+                </div>
+            </div>
+	      </div>        
+  	</div>
+</div>

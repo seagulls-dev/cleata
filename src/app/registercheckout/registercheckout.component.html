@@ -1,0 +1,54 @@
+<div class="banner-section credentials-panel-new">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-5">
+            <figure class="login-attributes">
+              <img src="assets/images/login-attributes.png" alt="typing"/>
+            </figure>
+        </div>
+        <div class="col-md-7">
+          <div class="credentials-panel">
+            <div class="crendentails-right-section">
+              <div class="page-heading text-center">
+                <img src="assets/images/heading-object.png" alt="heading-object">
+                <h2>Purchase Plan </h2>
+              </div>
+              <form [formGroup]="checkoutForm" (ngSubmit)="buy()">
+                <div class="row">
+                    <!-- <div class="col-sm-12">
+                        <div class="form-group">
+                             <div class="append-icon" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">            
+                                <input type="text" class="form-control" placeholder="Please enter name" formControlName="name">
+                                 <img src="assets/images/user.png" alt="name"/>
+                             </div>  
+                              <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                <div *ngIf="f.name.errors.required">Name is required</div>
+                              </div>
+                        </div>
+                    </div> -->
+
+                    <div class="col-sm-12">
+                    	<div class="form-group">
+                    		<div id="card-element" class="append-icon field" style="padding: 0 0 0 .75rem;">
+                    			<ngx-stripe-card [options]="cardOptions" [elementsOptions]="elementsOptions"></ngx-stripe-card>
+                    		</div>
+                    	</div>
+                    </div>
+                    
+                    <div class="col-sm-12">
+                          <div class="form-group text-center">
+                            <button type="submit" class="btn submit-btn">
+                                Pay Now
+                                <i class="fa fa-angle-right"></i>
+                            </button>
+                           </div>
+                    </div>
+                
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

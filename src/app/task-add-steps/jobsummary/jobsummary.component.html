@@ -1,0 +1,178 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section mvh dashborad-inner uploadpage">
+  	<div class="container">
+	    <div class="dashborad-panel">
+	        <app-businesssidemenu></app-businesssidemenu>
+	        <div class="dashborad-rightsider">
+	            <div id="content">
+				    <h1>Job Summary</h1>
+
+				    <p class="mb-8">Aenean ultrices eu lectus in accumsan. Ut tincidunt, arcu non porttitor vestibulum, leo massa venenatis metus, ut dignissim augue turpis vel sapien. Etiam vel pretium massa. Nullam volutpat sit amet lorem nec blandit.</p>
+
+				    <div class="w-3/4 shadow-sm rounded-lg mt-16 summarty-text">
+
+				        <div class="d-sm-flex justify-content-between summaartcontnetn">
+				            <div>
+				                <h3 class="commanlsittecxt"> <b>1.</b>Does your first row contain headings?</h3>
+				                <p *ngIf="does_header">{{does_header.boolean_question ? "Yes" : "No"}}</p>
+				            </div>
+				            <a class="block  align-self-center" [routerLink]="['/tasks/doesheader/'+task_id]"><img src="assets/images/pencil.svg" alt="img"></a>
+				        </div>
+
+				        <div class="d-sm-flex justify-content-between summaartcontnetn">
+				            <div>
+				                <h3 class="commanlsittecxt"> <b>2.</b>Please assign headings for your import</h3>
+				                <p *ngIf="does_header && !does_header.boolean_question && does_header.data"><span *ngFor="let header_data of does_header.data;let i=index;">{{i ? ", " : ""}}{{header_data.column_name}}</span></p>
+				            </div>
+				            <a class="block  align-self-center" [routerLink]="['/tasks/assignheader/'+task_id]"><img src="assets/images/pencil.svg" alt="img"></a>
+				        </div>
+
+				        <div class="d-sm-flex justify-content-between summaartcontnetn">
+				            <div>
+				                <h3 class="commanlsittecxt"> <b>3.</b>Please assign data types to your columns</h3>
+				                <p class="mt-2" *ngIf="does_header && does_header.data && assign_datatype">
+				                    <span *ngFor="let header_data of does_header.data;let i=index;"><span class="font-semibold text-black">{{header_data.column_name}}:</span> {{assign_datatype.data[i].datatype_name == "string" ? "Text" : (assign_datatype.data[i].datatype_name == "integer" ? "Numeric" : (assign_datatype.data[i].datatype_name == "date" ? "Date" : (assign_datatype.data[i].datatype_name == "boolean" ? "Yes/No" : "")))}}<br *ngIf="(i+1) < does_header.data.length"></span>
+				                </p>
+				            </div>
+				            <a class="block  align-self-center" [routerLink]="['/tasks/assigndatatype/'+task_id]"><img src="assets/images/pencil.svg" alt="img"></a>
+				        </div>
+
+				        <div class="d-sm-flex justify-content-between summaartcontnetn">
+				            <div>
+				                <h3 class="commanlsittecxt"> <b>4.</b>Allocate Teams</h3>
+				                <p *ngIf="teams_manage && teams_manage.data"><span *ngFor="let teams of teams_manage.data.teams;let i=index;">{{i ? (teams_manage.data.teams.length == (i+1) ? " and ": ", ") : ""}}{{teams.team_name}}</span></p>
+				            </div>
+				            <a class="block  align-self-center" [routerLink]="['/tasks/allocateteam/'+task_id]"><img src="assets/images/pencil.svg" alt="img"></a>
+				        </div>
+
+				        <div class="d-sm-flex justify-content-between summaartcontnetn">
+				            <div>
+				                <h3 class="commanlsittecxt"> <b>5.</b>Configure column permissions</h3>
+				                <p>View Permissions</p>
+				            </div>
+				            <a class="block  align-self-center" [routerLink]="['/tasks/configurecolumnpermissions/'+task_id]"><img src="assets/images/pencil.svg" alt="img"></a>
+				        </div>
+
+				        <div class="d-sm-flex justify-content-between summaartcontnetn">
+				            <div>
+				                <h3 class="commanlsittecxt"> <b>6.</b>Permission conflict management</h3>
+				                <p *ngIf="conflict_permission && conflict_permission.data">{{conflict_permission.data.permission_type == "most" ? "Most restrictive permissions – The user will receive the most restrictive permission; i.e read only over edit" : (conflict_permission.data.permission_type == "least" ? "Least restrictive permissions – The user will receive the least restrictive permission; i.e. edit over read only" : "")}}</p>
+				            </div>
+				            <a class="block  align-self-center" [routerLink]="['/tasks/conflictcolumnpermissions/'+task_id]"><img src="assets/images/pencil.svg" alt="img"></a>
+				        </div>
+
+				        <div class="d-sm-flex justify-content-between summaartcontnetn">
+				            <div>
+				                <h3 class="commanlsittecxt"> <b>7.</b>Do you want to allow users to reallocate tasks?</h3>
+				                <p *ngIf="reallocate_task">{{reallocate_task.boolean_question ? "Yes" : "No"}}</p>
+				            </div>
+				            <a class="block  align-self-center" [routerLink]="['/tasks/reallocatetasks/'+task_id]"><img src="assets/images/pencil.svg" alt="img"></a>
+				        </div>
+
+				        <div class="d-sm-flex justify-content-between summaartcontnetn">
+				            <div>
+				                <h3 class="commanlsittecxt"> <b>8.</b>Do you want to configure business rules?</h3>
+				                <p *ngIf="business_rules">{{business_rules.boolean_question ? "Yes" : "No"}}</p>
+				            </div>
+				            <a class="block  align-self-center" [routerLink]="['/tasks/wantconfigurebusinessrules/'+task_id]"><img src="assets/images/pencil.svg" alt="img"></a>
+				        </div>
+
+				        <div class="d-sm-flex justify-content-between summaartcontnetn">
+				            <div>
+				                <h3 class="commanlsittecxt"> <b>9.</b>Configure business rules</h3>
+				                <p *ngIf="business_rules">{{business_rules.boolean_question ? "Click to view" : "Not Applicable"}}</p>
+				            </div>
+				            <a class="block  align-self-center" [routerLink]="['/tasks/configurebusinessrules/'+task_id]"><img src="assets/images/pencil.svg" alt="img"></a>
+				        </div>
+
+				        <div class="d-sm-flex justify-content-between summaartcontnetn">
+				            <div>
+				                <h3 class="commanlsittecxt"> <b>10.</b>Review matching data</h3>
+				                <p>Not Applicable</p>
+				            </div>
+				            <a class="block align-self-center" [routerLink]="['/tasks/reviewmatchingdata/'+task_id]"><img src="assets/images/pencil.svg" alt="img"></a>
+				        </div>
+
+				        <div class="d-sm-flex justify-content-between summaartcontnetn">
+				            <div>
+				                <h3 class="commanlsittecxt"> <b>11.</b>Would you like to assign the uncategorized results to teams to deal with?</h3>
+				                <ng-container *ngIf="uncategorized_result_divide">
+					                <p>{{uncategorized_result_divide.boolean_question ? "Yes" : "No"}}</p>
+					                <div class="w-50" *ngIf="uncategorized_result_divide.boolean_question && uncategorized_result_divide.data">
+					                    <div class="overinnersection shadow-sm rounded-lg">
+					                        <div class="d-sm-flex justify-content-between py-1" *ngFor="let teams_data of uncategorized_result_divide.data.teams_data;let i=index;"><p class="text-blue-900">{{teams_data.team_name}}</p><p class="text-gray-600 self-center text-sm">{{teams_data.value}}{{uncategorized_result_divide.data.type == "percent" ? "%" : ""}}</p></div>
+					                        
+					                    </div>
+					                </div>
+				                </ng-container>
+				            </div>
+				            <a class="block  align-self-center" [routerLink]="['/tasks/uncategorizedresulttoteams/'+task_id]"><img src="assets/images/pencil.svg" alt="img"></a>
+				        </div>
+
+				        <div class="d-sm-flex justify-content-between summaartcontnetn">
+				            <div>
+				                <h3 class="commanlsittecxt"> <b>12.</b>Set a start date</h3>
+				                <p *ngIf="start_date && start_date.data">{{start_date.data | date: 'dd MMMM yyyy'}}</p>
+				            </div>
+				            <a class="block  align-self-center" [routerLink]="['/tasks/setstartdate/'+task_id]"><img src="assets/images/pencil.svg" alt="img"></a>
+				        </div>
+
+				        <div class="d-sm-flex justify-content-between summaartcontnetn">
+				            <div>
+				                <h3 class="commanlsittecxt"> <b>13.</b>Would you like to set a target completion date?</h3>
+				                <p *ngIf="end_date">{{end_date.boolean_question ? "Yes" : "No"}}{{end_date.boolean_question && end_date.data ? " - "+(end_date.data | date: 'dd MMMM yyyy') : ""}}</p>
+				            </div>
+				            <a class="block  align-self-center" [routerLink]="['/tasks/setcompletedate/'+task_id]"><img src="assets/images/pencil.svg" alt="img"></a>
+				        </div>
+
+				        <div class="d-sm-flex justify-content-between summaartcontnetn">
+				            <div>
+				                <h3 class="commanlsittecxt"> <b>14.</b>User assignment policy</h3>
+				                <p *ngIf="end_date && end_date.boolean_question && assignment_policy && assignment_policy.data">{{
+				                	assignment_policy.data.assign_type == "weekly" ? "Weekly - issue an equal amount each week up to the target completion date" :
+				                	(assignment_policy.data.assign_type == "daily" ? "Daily - issue an equal amount daily up to the target completion date" : 
+				                	assignment_policy.data.assign_type == "daily_working" ? "Daily (working week) - issue an equal amount daily using a working week (Monday to Friday) up to the target completion date" : (
+				                	assignment_policy.data.assign_type == "immediately" ? "Immediately - issue all records equally at once" : ""
+				                	))
+				                }}</p>
+				                <p *ngIf="!end_date || !end_date.boolean_question">Not Applicable</p>
+				            </div>
+				            <a class="block  align-self-center" [routerLink]="['/tasks/userassignmentpolicy/'+task_id]"><img src="assets/images/pencil.svg" alt="img"></a>
+				        </div>
+				        
+				    </div>
+
+				    <div class="w-full d-sm-flex mt-16">
+				        <a [routerLink]="" (click)="submitDataFile()" class="bg-blue-800">Process datafile</a>
+				    </div>
+				</div>
+          	</div>
+	    </div>        
+  	</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="limitExceedModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Limit Exceed</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="limitExceedMessage"></div>
+      <div class="modal-footer popup-btns">
+        <button type="button" class="submit-btn cancel" data-dismiss="modal">Cancel</button>
+        <a [routerLink]="['/upgradeplan/tasks'+task_id]" class="submit-btn">Upgrade</a>
+      </div>
+    </div>
+  </div>
+</div>

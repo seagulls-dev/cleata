@@ -1,0 +1,147 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+
+
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section object-comman object-comman-reverse after-login-section">
+	<div class="container">
+		<div class="dashborad-panel">
+			<!-- <app-businesssidemenu></app-businesssidemenu> -->
+
+			<div class="dashborad-rightsider full-width">
+
+				<div class="edit-profile-set view-team-manager-page" *ngIf="taskData">
+					<div class="list-top-attribute">
+						<h3> View Assigned Tasks </h3>
+						<div class="rightattributepanel">
+							<div class="form-view-concept">
+                                               
+	                         	<ul class="d-flex backnextarrow">
+	                               <li>
+	                               	 <a [routerLink]="['/tasks/form/view/'+task_id]" title="Form View"> <i class="fa fa-wpforms"></i></a>
+	                               </li>
+	                            	<li>
+	                                	<a href="#" title="Back Record"> <i class="fa fa-long-arrow-left"></i> </a>
+	                                </li>
+	                                <li>
+	                                	<a href="#" title="Forword Record"> <i class="fa fa-long-arrow-right"></i> </a>
+	                                </li>
+	                            </ul>
+	                           
+	                         </div>
+							<div class="attributesearch">
+								<input type="text" class="form-control" placeholder="Search task data"
+									[(ngModel)]="searchKeyword" (keyup.enter)="searchByKeyword()">
+								<img src="assets/images/black-search.png" alt="img">
+							</div>
+							<a [routerLink]="['/tasks']" class="btn blue-custom-btn backbtn"> <i
+									class="fa fa-long-arrow-left"></i> Back </a>
+						</div>
+					</div>
+
+					<div class="table-data">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th class="text-center" style="min-width: 175px;">Action</th>
+										<th *ngIf="taskData.task.reallocate_task">Reassign Task</th>
+										<th>Start Date</th>
+										<th>End Date</th>
+										<ng-container *ngFor="let task_data of taskData.task.task_header;let i=index;">
+											<!-- <ng-container *ngFor="let permission of taskData.task_permissions;"> -->
+											<th *ngIf="taskData.task_permissions.permissions[i] !== 'NO ACCESS'">
+												{{task_data}}</th>
+											<!-- </ng-container> -->
+										</ng-container>
+									</tr>
+								</thead>
+								<tbody>
+									<ng-container *ngIf="taskData && taskData.task_details.result.length">
+										<tr *ngFor="let task_data of taskData.task_details.result;let t=index;">
+											<td class="taskstatus-icons text-center">
+												<!-- <div class="action"> -->
+													<!-- <a [routerLink]="['/tasks/form/view/'+task_data._id]" *ngIf="task_data.task_status == 'assigned'"><img src="assets/images/view.png" alt="img"></a> -->
+
+													<a [routerLink]="" (click)="rejectTask(t)" *ngIf="task_data.task_status == 'assigned'"><img src="assets/images/delete.png" alt="img"></a>
+
+													<i class="fa fa-check-square completed" aria-hidden="true" *ngIf="task_data.task_status == 'completed'">
+														<span class="small">Complete</span>
+													</i>
+													<i class="fa fa-clock-o assigned" aria-hidden="true" *ngIf="task_data.task_status == 'assigned'" (click)="onTaskUpdate('completed',task_data, null)">
+														<span class="small">Pending</span>
+													</i>
+													
+												<!-- </div> -->
+											</td>
+											<td *ngIf="taskData.task.reallocate_task">
+												<ng-container *ngIf="task_data.task_status != 'completed'">
+													<select class="form-control without-append-input" (change)='onUserChange($event, task_data._id, t)'>
+														<option value="">Select user</option>
+														<option *ngFor="let taskUsers of taskUsersData;let u=index;" value="{{taskUsers.user._id}}" [selected]="task_data.assign_user && taskUsers.user._id == task_data.assign_user._id">{{taskUsers.user.email}}</option>
+													</select>
+												</ng-container>
+											</td>
+											<td class="text-center">{{task_data.start_date ? (task_data.start_date | date: "dd MMM yyyy") : "-"}}</td>
+                                          	<td class="text-center">{{task_data.end_date ? (task_data.end_date | date: "dd MMM yyyy") : "-"}}</td>
+											<ng-container *ngFor="let data of task_data.task_modified_data;let i=index;">
+												<!-- <ng-container *ngFor="let permission of taskData.task_permissions;"> -->
+												<td *ngIf="taskData.task_permissions.permissions[i] !== 'NO ACCESS'">
+													<span *ngIf="taskData.task_permissions.permissions[i] == 'READ' || task_data.task_status == 'completed'" class="name-user">{{setDataAccording(data)}}</span>
+													<span class="name-user" *ngIf="taskData.task_permissions.permissions[i] == 'EDIT' && task_data.task_status != 'completed'">
+														<input type="text" class="form-control without-append-input" [value]="data" (blur)="onTaskUpdate($event,task_data, i)" style="min-width: 175px;">
+													</span>
+												</td>
+													<!-- </ng-container> -->
+											</ng-container>
+											
+										</tr>
+									</ng-container>
+
+									<ng-container *ngIf="!(taskData && taskData.task_details.result.length)">
+										<tr>
+											<td colspan="500" class="text-center">No record found!</td>
+										</tr>
+									</ng-container>
+								</tbody>
+							</table>
+						</div>
+
+						<div class="table-show-pagination">
+							<div class="show-item" style="margin-bottom: 2%;">
+								<span>Showing</span>
+								<select class="form-control" id="pagelimit" [(ngModel)]="perPageLimit" (change)="onPageLimitChange($event)">
+                                	<option value="50">50</option>
+                                    <option value="100">100</option>
+                                    <option value="250">250</option>
+                                    <option value="500">500</option>
+								</select>
+								<span> records out of
+									{{count}} total</span>
+							</div>
+							<ul class="pagination" style="overflow: auto;">
+								<li class="page-item {{!prevPage?'disabled':''}}">
+									<a [routerLink]="" class="page-link pageprev" (click)="gotoPrevious()">Prev</a>
+								</li>
+
+								<ul class="pagination" style="overflow: auto;border: none;">
+									<li *ngFor="let page of pageArray;let i=index;" class="page-item">
+										<a [routerLink]="" class="page-link {{activePage==page ? 'active' : ''}}"
+											(click)="gotoPage(i+1)">{{page}}</a>
+									</li>
+								</ul>
+
+								<li class="page-item {{!nextPage?'disabled':''}}">
+									<a [routerLink]="" class="page-link pagenext" (click)="gotoNext()">Next</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

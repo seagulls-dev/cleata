@@ -1,0 +1,6 @@
+.backnextarrow .disabled {
+	cursor: not-allowed;
+}
+.backnextarrow .disabled a {
+	pointer-events: none;
+}

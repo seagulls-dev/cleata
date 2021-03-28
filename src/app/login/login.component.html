@@ -1,0 +1,128 @@
+<!--banner start-->
+  <div class="banner-section inner-banner-section">
+     
+    
+    
+  </div>
+  <!--banner end-->
+  
+  <!--login page-->
+<div class="inner-section loginver1-page">
+    <div class="container">
+        <div class="my-12">
+            <div class="shadow-xl rounded-xl innershape">
+                <div class="bg-blue-700 text-white striop rounded-tl-xl rounded-tr-xl">Login</div>
+                <div class="py-4">
+                <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+                    <div class="px-4">
+                     
+                      <div class="form-group">
+                          <label>Email Address</label>
+                          <input type="text" class="form-control shadow-sm" placeholder="Enter email" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required">Email is required</div>
+                            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                          </div>
+                      </div>
+                      
+                    
+                      <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" placeholder="Password" class="form-control shadow-sm" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                          <div *ngIf="f.password.errors.required">Password is required</div>
+                        </div> 
+                      </div>
+                      
+                      <div class="d-flex justify-content-between align-items-center rem">
+                        <label class="d-flex align-items-center"><input type="checkbox" formControlName="rememberMe"><span>Remember Me</span></label>
+                        <label><a [routerLink]="['/forgot-password']">Forgot Password?</a></label>
+                     </div>
+                      
+                    </div>
+                    
+                    <div class="btntoper">
+                        <button class="shadow-xl mt-3 bg-blue-700">Login</button>
+                      </div>
+                </form>
+                </div>
+            </div>
+            <a class="dont" [routerLink]='"/"' [fragment]="'pricing'">Don't have an account? Sign up here</a>
+        </div>
+    </div>
+</div>
+    
+     <!--login page-->
+
+<!-- <div class="banner-section credentials-panel-new">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-5">
+          <figure class="login-attributes">
+            <img src="assets/images/login-attributes.png" alt="typing"/>
+          </figure>
+      </div>
+      <div class="col-md-7">
+        <div class="credentials-panel">
+           <div class="crendentails-right-section">
+                  <div class="page-heading text-center">
+                    <img src="assets/images/heading-object.png" alt="heading-object">
+                    <h2>Sign in to your account </h2>
+                  </div>
+                  <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+                   <div class="row">
+                         <div class="col-sm-12">
+                            <div class="form-group">
+                                 <div class="append-icon" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">            
+                                    <input type="text" class="form-control" placeholder="Enter email" formControlName="email">
+                                     <img src="assets/images/email.png" alt="email"/>
+                                 </div>  
+                                  <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                    <div *ngIf="f.email.errors.required">Email is required</div>
+                                    <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group mb-4">
+                                 <div class="append-icon" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">            
+                                    <input type="password" class="form-control" placeholder="Enter password" formControlName="password">
+                                     <img src="assets/images/password.png" alt="password"/>
+                                 </div> 
+                                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                  <div *ngIf="f.password.errors.required">Password is required</div>
+                                </div> 
+                            </div>
+                        </div>
+                        
+                        <div class="col-6">
+                          <div class="check-custom">
+                                <input type="checkbox" class="form-control" formControlName="rememberMe"> 
+                                <label>Remember me</label>
+                          </div>
+                        </div>
+                        <div class="col-6 text-right forgot-link">
+                          <a [routerLink]="['/forgot-password']">Forgot password ?</a>
+                        </div>
+                        <div class="col-sm-12">
+                              <div class="form-group text-center">
+                                <button type="submit" class="btn submit-btn">
+                                    Sign in
+                                    <i class="fa fa-angle-right"></i>
+                                </button>
+                               </div>
+                        </div>
+                    
+                    </div>
+                  </form>
+                  <div class="or-panel text-center">
+                    <span>OR</span>
+                    <div class="or-linktext">Create an account <a [routerLink]='"/"' [fragment]="'pricing'">Sign Up</a></div>
+                  </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

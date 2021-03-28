@@ -1,0 +1,393 @@
+@media only screen and (max-width: 1500px) {
+.banner-section{border-radius:0px 0px 0px 50px;}
+.trailer-video-wrapper{margin-left:0px;}
+
+}
+
+@media only screen and (max-width: 1400px) {
+.banner-content-box{max-width:550px;}
+h1{font-size:46px; line-height:50px;}
+.scroll-down{max-width:1140px;}
+.banner-content-box p{margin: 15px 0px 15px 0px;}
+.logo{width:225px;}
+
+/*16-6-2020 new ver css start*/
+.inner-banner-section{padding-top:108px;}
+.selectplancontnetn .text-5xl{font-size:40px;}
+/*16-6-2020 new ver css end*/
+
+}
+
+@media only screen and (max-width: 1360px) {
+h1{font-size:42px;}
+h2{font-size:35px;}
+.header-right .navbar-nav .nav-item{margin-right:10px;}
+.custom-btn{padding:7px 25px;}
+.user-account{padding:0px 10px;    margin:0px 10px;}
+.custom-solid-btn{padding:13px 25px;}
+
+/*16-6-2020 new ver css start*/
+.selectplancontnetn .text-5xl{font-size:40px;}
+/*16-6-2020 new ver css end*/
+
+}
+
+@media only screen and (max-width: 1280px) {
+h1{font-size:40px; line-height:40px;}
+h2{font-size:32px;}
+.banner-content-box{max-width:500px;}
+.scroll-down{max-width: 1024px;}
+.header-right .navbar-nav .nav-item{margin-right:5px;}
+.trailer-video-wrapper{padding-left:15px;}
+.container-fluid { padding-left: 15px;   padding-right: 15px;}
+.attributesearch{width:212px;}
+.list-top-attribute h3{text-align:center; margin-bottom:10px;}
+.rightattributepanel, .list-top-attribute h3{max-width:100%;}
+.rightattributepanel{justify-content: center;}
+.blue-custom-btn{font-size:13px;}
+.table-show-pagination{margin-top:10px;}
+
+/*16-6-2020 new ver css start*/
+.selectplancontnetn ul{padding:12px 15px;}
+/*16-6-2020 new ver css end*/
+	
+}
+
+@media only screen and (max-width: 1199px) {
+
+.header-right .navbar-nav .nav-link{font-size:14px; padding:5px 7px;}
+.custom-btn{padding:8px 14px; font-size:13px;}
+.logo{width:200px;}
+.search-panel i{font-size:19px;}
+h1{font-size:33px; line-height:33px;}
+.banner-content-box p{font-size:14px; line-height:20px;}
+.banner-section{padding-top:70px;}
+.container-fluid{padding-left:15px; padding-right:15px;}
+.banner-content-box{max-width:400px;}
+.scroll-down{max-width:830px; bottom:10px;}	
+.scroll-down a img{max-width:16px;}
+.banner-right-box figure::before{background-size:160px; left: -150px; bottom: 61px;}
+.banner-right-box{right:15px;}
+.how-it-work{padding: 60px 0px 20px 0px;}
+.page-heading{margin-bottom:25px;}
+.how-it-work-content{max-width:340px;}
+.how-it-work-content figure{margin-bottom:50px;}
+.cleata-right span{font-size:16px;}
+.cleata-right p{font-size:13px; line-height:20px;}
+.custom-list li{font-size:13px; line-height:20px; margin-bottom:5px;}
+.object-comman::before{height:100%;}
+.what-is-cleata{padding-top: 100px; padding-bottom:35px;}
+.cleata-featuretext{width:260px;}
+.cleata-featuretext a{font-size:18px; line-height:22px;}
+.trailer-video a{width:85px; height:85px; line-height:100px;}
+.trailer-video a i{font-size:27px;}
+.price-plan-rate{font-size:35px;}
+.price-plan-heading{font-size:19px; padding-bottom:10px;}
+.plan-list{padding-bottom:25px;}
+.newsletter > div{width:400px;}
+.banner-section::after{display:none;}
+.how-it-work-content figure span{right:-20px;}
+
+.crendentails-right-section{padding:30px 20px 20px 20px;}
+.credentials-panel .page-heading h2{font-size:23px;}
+.inner-banner-section{padding-top:108px;}
+.inner-banner-section h1{margin-bottom:0px;}
+.crendentails-left-section{flex:0 0 70%; width:70%;}
+
+.social-media{bottom:0px;}
+
+/*.dashborad-leftsider {width:28%;  flex:0 0 28%;}*/
+.dashborad-rightsider{width:72%;  flex:0 0 72%;}
+
+.couting-dashboard{padding:25px 15px 0px 15px;}
+.couting-dashboard > div strong{font-size:24px;}
+.couting-dashboard > div span{font-size:18px; line-height:22px;}
+h3{font-size:20px;}
+.couting-dashboard > div img{max-width:70px;}
+
+.footer-social-media {padding: 10px 0px 10px 0px;}
+.footer-social-media li{margin-right:5px;}
+
+.view-team-manager-page .rightattributepanel, .add-teamuserlist-page .rightattributepanel{max-width: calc(100% - 300px); justify-content: flex-end;}
+.view-team-manager-page .list-top-attribute h3, .add-teamuserlist-page .list-top-attribute h3{text-align:left; max-width:300px;}
+
+.login-page{min-height:auto;}
+
+.min-set-height {
+    min-height: inherit;
+}
+
+
+/*16-6-2020 new ver css start*/
+footer .footerlogo img{padding-right: 18px; margin-right: 18px;}
+.dashborad-rightsider .px-12 {	padding-left: 25px;	padding-right: 25px;}
+.dashborad-rightsider .space-x-10 > :not(template) ~ :not(template){margin-left:25px;}
+.dashborad-rightsider .text-lg{font-size:17px;}
+.dashborad-rightsider .text-2xl{font-size:20px;}
+.dashborad-rightsider h3{font-size:20px;}
+.selectplancontnetn .text-5xl {	font-size: 28px;}
+.selectplancontnetn ul{margin-top:15px; padding:0px 10px;}
+.selectplancontnetn button{padding:25px 8px;}
+.uploadpage .dropzone{height:350px;}
+
+.foundsection img{margin:16px 20px;}
+.foundsection > div{margin-left:20px;}
+
+/*16-6-2020 new ver css end*/
+
+}
+
+@media only screen and (max-width: 991px) {
+
+.banner-content-box{max-width:100%;}
+.banner-right-box{right:0px;}
+.banner-right-box figure{width:60%; margin:auto;}
+.banner-section{padding-top:115px;}
+.custom-btn{font-size:14px;}
+.user-account{border-left:0px;}
+
+.header-right .navbar{order:3; margin-left:20px;}
+.header-right .navbar-toggler:focus, .header-right .navbar-toggler:hover{outline:none;}
+.header-right .navbar-toggler i{color:#fff; font-size:31px;}	
+.header-right .navbar-toggler{padding:0px; border:none;}
+.header-right .navbar-collapse {position: absolute;	top:43px;	width: 100vw; padding:20px 15px 10px 15px;	background: #fff;	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);	right: -15px;}
+.header-right .navbar-toggler[aria-expanded="true"] .fa-bars::before {	content: "\f00d";}
+header.active .header-right .navbar-toggler i{color:#2b54a3;}
+.header-right .navbar-nav .nav-item.active .nav-link{color:#2b54a3;}
+.header-right .navbar-nav .nav-link{color:#2e2e2e; font-size:16px;}
+.header-right .navbar-nav .nav-link::after{display:none;}
+.header-right .navbar-nav .nav-link:hover{color:#2b54a3;}
+header.active .user-account{border-left:none;}
+.scroll-down{display:none;}
+h2{font-size:28px;}
+.how-it-work{padding:10px 0px 20px 0px;}
+.how-it-work-content{max-width:280px;}
+.how-it-work-text strong{font-size:18px;}
+.how-it-work-content figure::after{height:117%;}
+.trailer-video-wrapper{max-width:80%; margin:0px auto 60px;}
+.object-comman::before{display:none;}
+.cleat-feature{ padding:35px 0px 95px 0px}
+.cleata-featuretext{width:100%;}
+.cleata-featuretext p{line-height:20px;}
+.price-plan-content{margin-bottom:70px;}
+.pricing-plan .tab-content .col-sm-6{margin-bottom:30px;}
+.banner-right-box{bottom:-40px;}
+.cleata-featuretext a{font-size:16px; line-height:20px;}
+.pricing-section{padding:25px 0px 10px 0px;}
+.price-plan-content:hover{transform: scale(1.05);-webkit-transform: scale(1.05);}
+.newsletter > div{width:300px;}
+.footer-social-media li{margin-right:3px;}
+.footer-link li{margin-right:10px;}
+.footer-link li a, .copyright-txt{font-size:13px;}
+
+
+
+
+.inner-banner-section{padding-top:108px;}
+.crendentails-left-section {flex: 0 0 90%;    width:90%;}
+.crendentails-right-section{width:73%;}
+
+.header-right .navbar-collapse{top:40px;}
+header.active{z-index:99;}
+/*.dashborad-leftsider {width:30%;  flex:0 0 30%;}*/
+.dashborad-rightsider{width:70%;  flex:0 0 70%;  padding:0px 25px;}
+.profile-change-section figure{width:150px; height:150px;}
+.couting-dashboard{padding:25px 15px 20px 15px; height:auto; margin-bottom:15px;}
+.dashborad-leftsider ul li a{padding-left:35px;}
+.couting-dashboard > div span{font-size:18px;}
+.couting-dashboard > div strong{font-size:25px;}
+h3{font-size:20px;}
+.graph-content{margin:15px 0px;}
+.edit-profile-set{padding:20px 15px;}
+
+.footer-social-media, .copyright-txt{text-align:center;}
+.footer-link{margin:10px 0px;}
+
+.blue-custom-btn{padding:9px 12px;}
+.attributesearch{width:185px; margin-right:10px;}
+.attributesearch input.form-control{font-size:12px;}
+.logo-slap{justify-content: center;}
+
+.login-page{padding-bottom:40px;}
+.view-team-manager-page .rightattributepanel, .add-teamuserlist-page .rightattributepanel{max-width:100%; justify-content:center;}
+.view-team-manager-page .list-top-attribute h3, .add-teamuserlist-page .list-top-attribute h3{text-align:center; max-width:100%;}
+
+.dashborad-leftsider{max-width:260px}
+.dashborad-rightsider {    width: 100%;    flex: 0 0 100%;    padding: 0px 0px 0px 25px;    max-width: calc(100% - 260px);}
+
+/*16-6-2020 new ver css start*/
+footer .footerlogo img{max-width:110px; padding-right: 10px; margin-right: 10px;}
+.footer-social-media li a img{max-width:18px;}
+.selectplancontnetn button{width:100%; margin-bottom:20px;}
+.selectplancontnetn.space-x-5 > :not(template) ~ :not(template){margin-left:0px;}
+.plansummary .mt-16, .selectplan .mt-16{margin-top:40px;}
+.plansummarybtn a{padding:8px 25px;}
+.uploadpage .dropzone{height:300px;}
+.foundsection{padding:15px;}
+.dashborad-rightsider h1{font-size:25px;}
+.foundsection img{margin:15px 10px;}
+.dashborad-rightsider .mt-12{margin-top:30px;}
+/*16-6-2020 new ver css end*/
+
+
+}
+
+@media only screen and (max-width: 767px) {
+
+.logo{width:160px; min-height:45px; align-self: center;}
+.custom-btn{font-size:14px;}
+.custom-solid-btn i{top:2px;}
+.header-right .navbar{margin-left:15px;}
+.banner-right-box figure{width:85%;}
+.user-account a{margin-right:5px;}
+.user-account{margin-left:0px;}
+
+
+.footer-link{text-align:center; margin-bottom:10px;}
+.copyright-txt{text-align:center;}
+.footer-logo{margin:0px auto 10px; text-align:center;}
+.footer-social-media{text-align:center;}
+.newsletter{margin-bottom:20px;}
+.banner-content-box{margin-bottom:5px;}
+.cleata-featuretext{width:330px; margin-bottom:30px;}
+.cleat-feature{padding-bottom:30px;}
+.how-it-work-content figure::after{right: -10px; top: -10px;}
+.how-it-work-content figure::after{height:108%;}
+.how-it-work-content figure span{right:-10px; width:55px; height:55px; line-height:45px; font-size:24px;}
+.newsletter > div{height:45px;}
+.newsletter input[type="submit"]{font-size:13px;}
+.banner-content-box p{margin: 10px 0px 10px 0px;}
+.logo-slap{text-align:center;}
+.crendentails-right-section{position:relative; top:0px;  transform:none; -webkit-transform:none;}
+.crendentails-left-section{width:100%; flex: 0 0 100%;}
+.crendentails-right-section{width:100%; padding:20px 15px;}
+.crendentails-left-section figure{margin:15px 0px 0px 15px;}
+.crendentails-left-section figure:after{left:-15px; top:-15px;  border-radius:15px }
+.inner-section{padding:25px 0px 0px 0px;}
+.contact-page .crendentails-left-section figure::after{left:-20px; right:inherit;}
+
+.credentials-panel{margin-bottom:35px;}
+.login-page{padding-bottom:0px;}
+.dashborad-leftsider {max-width:100%;  flex:0 0 100%; margin-bottom:30px;}
+.dashborad-rightsider{max-width:100%;  flex:0 0 100%; padding:0px 0px;}
+
+.submit-btn{margin-top:15px;}
+.couting-dashboard{margin-bottom:20px;}
+.couting-dashboard > div img{max-width:70px;}
+.couting-dashboard > div span{margin-top:10px;}
+
+.inner-header{padding: 18px 0px 18px 0px;}
+.inner-banner-section{padding-top:95px;}
+.edit-profile-set{margin-bottom:30px;}
+.show-item select.form-control{margin:0px 10px;}
+.attributesearch{width:200px;}
+.view-team-manager-page .rightattributepanel{flex-direction: inherit;}
+.view-team-manager-page .blue-custom-btn{padding:9px 8px; margin-left:5px;}
+.viewlableinformation{margin-bottom:15px;}
+.get-touch-part{padding-bottom:25px;}
+
+.dashborad-panel{ display: block;}
+.dashborad-leftsider{width: 100%;}
+.dashborad-rightsider{width: 100%;}
+
+
+/*16-6-2020 new ver css start*/
+.h-screen-1{height:auto;}
+.dashborad-inner{padding-bottom:50px;}
+.dashborad-rightsider h1{font-size:23px;}
+.datafilebtn{margin-bottom:16px;}
+.bg-blue-800, .bg-gray-300{padding:8px 20px;}
+.dashborad-rightsider .md\:w-5\/6 {width: 100%;}
+.dashborad-rightsider .w-5\/6 {width:100%;}
+
+.plansummary img{max-width:20px;}
+.dashborad-rightsider .space-x-10 > :not(template) ~ :not(template){margin-left:0px; margin-top:20px;}
+.dashborad-rightsider .mt-12{margin-top:20px;}
+.dashborad-rightsider .px-12{padding-left:15px; padding-right:15px;}
+.uploadpage .dropzone{height:250px;}
+.uploadpage .dropzone h3{font-size:17px;}
+.foundsection{flex-direction: column; padding:20px 15px;}
+.foundsection img{width:50px; margin-top:0px !important;}
+.foundsection > div{margin-left:0px;}
+.foundsection .bg-blue-800, .foundsection .bg-gray-300{padding:11px 15px;}
+/*16-6-2020 new ver css end*/
+
+
+}
+	
+
+@media only screen and (max-width: 575px) {
+.price-plan-content{height:auto; margin-bottom:0px;}
+.user-account{display:none;}
+.header-right .navbar .custom-btn{border: 1px solid #2e2e2e; color: #2e2e2e;}
+.header-right .navbar-nav .nav-item:last-child {border-top:2px solid #ecf0f5; padding-top:15px; margin-top:10px; margin-bottom:20px;}
+.header-right .navbar-nav .nav-item:last-child .custom-btn:hover { background-color: #2b54a3;    border: 1px solid #2b54a3;    color: #fff;}
+.header-right .navbar-collapse{padding:10px 15px 0px 15px;}
+.header-right .profileuser-name{color:#2e2e2e;}
+.header-right .profile-panel-head .dropdown-menu{margin-top:-13px; position:absolute; min-width: 185px; padding:0px 13px 2px 13px;}
+.header-right .navbar .custom-btn{margin-right: 10px;}
+
+
+.loginver1-page form .rem input{height:auto;}
+.loginver1-page form .rem label{font-size:13px;}
+.rem input{margin: 1px 5px 0px 0px;}
+.inner-header{padding: 18px 0px 18px 0px;}
+.inner-banner-section{padding-top:80px;}
+
+/*16-6-2020 new ver css start*/
+.profileuser-name a{color:#000;}
+a.dropdown-toggle svg path{fill:#000 !important;}
+.thumb{margin-right:20px;}
+.dashborad-rightsider .plansummarybtn a{display:block; margin-left:0px  !important; margin-bottom:10px; text-align:center; }
+/*16-6-2020 new ver css end*/
+
+}
+
+@media only screen and (max-width: 479px) {
+
+
+.logo {width: 186px; min-height:45px;}
+
+.banner-section{padding-top:80px;}
+.inner-header{padding: 18px 0px 18px 0px;}
+.inner-banner-section{padding-top:80px;}
+h1 {    font-size: 28px;    line-height: 30px;}
+h2{font-size:26px;}
+.banner-section{border-radius:0px;}
+.banner-right-box figure{width:90%;}
+.banner-right-box figure::before{display:none;}
+.lines .line{margin-left:inherit;}
+.banner-right-box figure::after{right: -15px; top: -15px;}
+
+.how-it-work-content figure{margin-bottom:30px;}
+.how-it-work-content{margin-bottom:0px;}
+
+.cleata-right span{margin-left:0px; line-height:19px;}
+.cleata-feature-content{margin-bottom:20px;}
+.cleat-feature{padding-bottom:5px;}
+.pricing-plan .nav-tabs .nav-item .nav-link{padding:5px 20px; font-size:16px;}
+.price-plan-content{height:auto;}
+.price-plan-content{margin-bottom:0px;}
+.page-heading{margin-bottom:15px;}
+.search-content.search-panel-open{width:240px;}
+.cleata-featuretext{width:100%;}
+.trailer-video-wrapper{max-width:95%;}
+.get-touch-part ul{max-width:100%;}
+.get-touch-part ul li{width:100%;}
+.get-touch-part ul li figure{margin:15px auto;}
+
+.check-custom input[type="checkbox"] + label{font-size:12px; padding:0 0 0 25px}
+.forgot-link a{font-size:12px;}
+.rightattributepanel { flex-direction: column;}
+.attributesearch{width:100%; margin-bottom:10px;}
+.table-show-pagination{ flex-direction: column;}
+.show-item{margin-bottom:10px;}
+
+/*16-6-2020 new ver css start*/
+.bg-blue-800, .bg-gray-300{font-size:14px;}
+.dashborad-rightsider p{font-size:15px;}
+.dashborad-rightsider .mt-16{margin-top:32px;}
+/*16-6-2020 new ver css end*/
+
+
+}

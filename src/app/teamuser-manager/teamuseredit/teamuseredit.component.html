@@ -1,0 +1,150 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section object-comman object-comman-reverse after-login-section">
+  	<div class="container">
+	      <div class="dashborad-panel">
+	        <app-businesssidemenu></app-businesssidemenu>
+
+	         <div class="dashborad-rightsider" *ngIf="teamUserData">
+                <div class="edit-profile-set add-teamuserlist-page">
+                     <div class="list-top-attribute">
+                        <h3> Edit user </h3>
+                        <div class="rightattributepanel">
+                        	
+                           <a [routerLink]="['/teamusers']" class="btn blue-custom-btn backbtn"> <i class="fa fa-long-arrow-left"></i> Back </a>
+                        </div>
+                     </div>
+                     <div class="viewmanagercontent">
+                        <form [formGroup]="teamUserForm" (ngSubmit)="saveTeamUser()">
+                          <div class="profile-change-section text-center">
+                                <figure><img [src]="teamUserForm.value.profile_picture ? httpClientService.imageUrl + teamUserForm.value.profile_picture : 'assets/images/no-img.png'" alt="profile"></figure>
+                                
+                                <div class="change-profile-photo">
+                                    <input type="file" ng2FileSelect [uploader]="uploader">
+                                    <!-- <input type="file" (change)="fileProgress($event)"> -->
+                                    <span> <img src="assets/images/camera.png" alt="camers"> Add profile photo </span>
+                                </div>
+                            </div>
+                          <div class="row">
+                          	<div class="col-lg-6">
+                            	<div class="addlableinformation">
+                                	<label class="custom-label">First Name </label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control without-append-input" placeholder="First name" formControlName="first_name" [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }">
+                                        <div *ngIf="submitted && f.first_name.errors" class="invalid-feedback">
+                  											<div *ngIf="f.first_name.errors.required">First name is required</div>
+                  											<div *ngIf="f.first_name.errors.maxlength">First name should be max {{f.first_name.errors.maxlength.requiredLength}} characters</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                              <div class="addlableinformation">
+                                  <label class="custom-label">Last Name </label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control without-append-input" placeholder="Last name" formControlName="last_name" [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }">
+                                        <div *ngIf="submitted && f.last_name.errors" class="invalid-feedback">
+                                        <div *ngIf="f.last_name.errors.required">Last name is required</div>
+                                        <div *ngIf="f.last_name.errors.maxlength">Last name should be max {{f.last_name.errors.maxlength.requiredLength}} characters</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                            	<div class="addlableinformation">
+                                	<label class="custom-label">Email </label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control without-append-input" placeholder="Email" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+											                  <div *ngIf="f.email.errors.required">Email is required</div>
+                                    		<div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                            	<div class="addlableinformation">
+                                	<label class="custom-label">Contact number </label>
+                                    <div class="form-group">
+                                        <input type="number" class="form-control without-append-input" placeholder="Contact number" formControlName="mobile" [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }">
+                                         <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                        <div *ngIf="f.mobile.errors.required">Contact number is required</div>
+                                        <div *ngIf="f.mobile.errors.range && f.mobile.errors.range.requiredMaxLength">Contact number should be max {{f.mobile.errors.range.requiredMaxLength}} digit</div>
+                                        <div *ngIf="f.mobile.errors.range && f.mobile.errors.range.requiredMinLength">Contact number should be min {{f.mobile.errors.range.requiredMinLength}} digit</div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="addlableinformation">
+                                    <label class="custom-label">Job Title </label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control without-append-input" placeholder="Job title" formControlName="job_title" [ngClass]="{ 'is-invalid': submitted && f.job_title.errors }">
+                                        <div *ngIf="submitted && f.job_title.errors" class="invalid-feedback">
+                                            <div *ngIf="f.job_title.errors.required">Job Title is required</div>
+                                            <div *ngIf="f.job_title.errors.maxlength">Job Title should be max {{f.job_title.errors.maxlength.requiredLength}} characters</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                              <div class="addlableinformation">
+                                  <label class="custom-label">Select teams </label>
+                                    <div class="form-group">
+                                      <ng-select2 formControlName="team_ids" [options]="{multiple: true}" [data]="teamsData"></ng-select2>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- <div class="col-lg-6">
+                                <div class="addlableinformation">
+                                    <label class="custom-label">Company Name </label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control without-append-input" placeholder="company name" formControlName="company_name" [ngClass]="{ 'is-invalid': submitted && f.company_name.errors }">
+                                        <div *ngIf="submitted && f.company_name.errors" class="invalid-feedback">
+                                            <div *ngIf="f.company_name.errors.required">Company name is required</div>
+                                            <div *ngIf="f.company_name.errors.maxlength">Company name should be max {{f.company_name.errors.maxlength.requiredLength}} characters</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                            
+                            <div class="col-lg-12">
+                            	<div class="addlableinformation statusaction">
+                                	<label class="custom-label">Enabled</label>
+                                    <label class="switch">
+                                      <input type="checkbox" formControlName="status">
+                                      <span class="switchslider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="col-sm-12">
+                                  <div class="form-group text-center">
+                                    <button type="submit" class="btn submit-btn">
+                                     Update user
+                                     <i class="fa fa-angle-right"></i>
+                                    </button>
+                                  </div>
+                            </div>
+                            
+                          </div>
+                        </form>
+                     </div>
+                        
+                </div>
+            </div>
+	      </div>        
+  	</div>
+</div>

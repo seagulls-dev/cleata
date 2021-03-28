@@ -1,0 +1,8 @@
+.selectcidcustom {
+	font-size: 15px !important;
+    margin: 0 0 0 20px;
+}
+
+input.is-invalid, select.is-invalid {
+	border-color: #dc3545 !important;
+}

@@ -1,0 +1,77 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section object-comman object-comman-reverse after-login-section">
+  	<div class="container">
+	      <div class="dashborad-panel">
+	        <app-businesssidemenu></app-businesssidemenu>
+
+	          <div class="dashborad-rightsider">
+                             
+                 <div class="edit-profile-set manager-teamuserlist-page">
+                     <div class="list-top-attribute">
+                        <h3> Manage Task Permissions </h3>
+                        <!-- <div class="rightattributepanel">
+                        	<div class="attributesearch">
+                            	<input type="text" class="form-control" placeholder="Task search" [(ngModel)]="searchKeyword" (ngModelChange)="searchByKeyword()">
+                                <img src="assets/images/black-search.png" alt="img">
+                            </div>
+                            <a [routerLink]="['/tasks/add']" class="btn blue-custom-btn">+ ADD JOB</a>
+                        </div> -->
+                     </div>
+                     <!-- <form [formGroup]="taskPermissionsForm" (ngSubmit)="saveTaskPermissions()"> -->
+                     <div class="table-data">
+                         <div class="table-responsive">
+                         	<table class="table">
+                            	<thead>
+                                   <tr *ngIf="taskData">
+                                    <th>TEAM</th>
+                                    <th *ngFor="let task_data of taskData.task_header;let i=index;">
+                                        {{task_data}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let team of teamsData">
+                                        <td>{{team.title}}</td>
+										<ng-container *ngIf="taskData">
+											<td *ngFor="let data of taskData.task_header;let i=index;">
+                                                <div class="show-item" style="margin-bottom: 2%;">
+                                                    <select class="form-control" style="width: 125px;" (change)="onPermissionChange($event, team, i)">
+                                                        <option value="EDIT">EDIT</option>
+                                                        <option value="READ">READ ONLY</option>
+                                                        <option value="NO ACCESS">NO ACCESS</option>
+                                                    </select>
+                                                </div>
+                                            </td>
+                                        </ng-container>
+                                        </tr>
+
+									<ng-container *ngIf="!(taskData && taskData.task_header.length)">
+										<tr>
+											<td colspan="4" class="text-center">No record found!</td>
+										</tr>
+									</ng-container>
+                                </tbody>
+                            </table>
+                         </div>
+                     </div>
+                        
+                     <div class="col-sm-12">
+                        <div class="form-group text-center">
+                          <div class="btn submit-btn">
+                             <input type="submit" value="Save Permissions" (click)="saveTaskPermissions()"> 
+                             <i class="fa fa-angle-right"></i>
+                          </div>
+                         </div>
+                  </div>
+                <!-- </form> -->
+                </div>
+            </div>
+	      </div>        
+  	</div>
+</div>

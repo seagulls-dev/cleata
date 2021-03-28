@@ -1,0 +1,41 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section mvh dashborad-inner uploadpage">
+  	<div class="container">
+	    <div class="dashborad-panel">
+	        <app-businesssidemenu></app-businesssidemenu>
+	        <div class="dashborad-rightsider">
+	            <div id="content" class="plansummary">
+                    <h1>Plan Summary</h1>
+                    <div class="mt-16 w-full" *ngIf="plan_summary">
+	                    <div class="pointer-cursor md:w-5/6 w-full mx-auto rounded-lg pt-8 pb-2 px-12 shadow-sm border-2">
+	                       	<div class="d-md-flex space-x-10">
+	                            <img src="assets/images/receipt.svg" alt="img">
+	                            <div>
+	                            <h3 class="text-blue-700">{{plan_summary.plan_name}}</h3>
+	                            <p class="mt-3 text-blue-900 opacity-75 text-lg">
+	                            	{{plan_summary.message}}
+	                            </p>
+	                            </div>
+	                   		</div>
+	                       	<div class="border-t d-flex justify-content-between border-gray-200 py-3 mt-12">
+		                        <p class="text-black self-center text-lg">To pay today:</p>
+		                        <p class="text-2xl font-bold text-blue-800">£{{plan_summary.cost}}</p>
+	                        </div>
+	                    </div>
+                        <div class="w-5/6 mx-auto mt-16 d-sm-flex justify-content-between plansummarybtn">
+	                        <a [routerLink]="" (click)="addUpdatePlan()" class="bg-blue-800">Confirm Upgrade </a>
+	                        <a [routerLink]="" (click)="goBack()" class="ml-3 text-md bg-gray-300 text-blue-800">Cancel, go back</a>
+                        </div>
+                    </div>
+                 </div>
+          	</div>
+	    </div>        
+  	</div>
+</div>

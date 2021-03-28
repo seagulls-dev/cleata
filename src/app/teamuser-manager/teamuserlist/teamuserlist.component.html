@@ -1,0 +1,91 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section object-comman object-comman-reverse after-login-section">
+  	<div class="container">
+	      <div class="dashborad-panel">
+	        <app-businesssidemenu></app-businesssidemenu>
+
+	          <div class="dashborad-rightsider">
+                             
+                 <div class="edit-profile-set manager-teamuserlist-page">
+                     <div class="list-top-attribute">
+                        <h3> Manage users </h3>
+                        <div class="rightattributepanel">
+                        	<div class="attributesearch">
+                            	<input type="text" class="form-control" placeholder="Search users name" [(ngModel)]="searchKeyword" (ngModelChange)="searchByKeyword()">
+                                <img src="assets/images/black-search.png" alt="img">
+                            </div>
+                            <a [routerLink]="['/teamusers/add']" class="btn blue-custom-btn">+ ADD USER</a>
+                        </div>
+                     </div>
+                     <div class="table-data">
+                         <div class="table-responsive">
+                         	<table class="table">
+                            	<thead>
+                                   <tr>
+                                	    <th>Profile Picture</th>
+                                      <th>Name</th>
+                                      <th>Email</th>
+                                      <th class="text-center">User Teams</th>
+                                      <th>Last Logged In</th>
+                                      <th class="text-center">Status</th>
+                                      <th class="text-center">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  <ng-container *ngIf="teamuUsersData && teamuUsersData.result.length">
+                                  	<tr *ngFor="let teamUserData of teamuUsersData.result;let i=index;">
+                                      	<td><figure class="thumb"><img [src]="teamUserData.profile_picture ? httpClientService.imageUrl + teamUserData.profile_picture : 'assets/images/no-img.png'"></figure></td>
+                                        <td><span class="name-user">{{teamUserData.full_name}}</span></td>
+                                        <td><span class="name-user">{{teamUserData.email}}</span></td>
+                                        <td class="text-center"><span class="name-user">{{teamUserData.user_teams.length}}</span></td>
+                                        <td>{{teamUserData.loggedin_at | date: httpClientService.defaltDate}}</td>
+                                        <td class="text-center"><img [src]="'assets/images/'+(teamUserData.status ? 'green' : 'red')+'-status.png'" alt="img"></td>
+                                        <td>
+                                        	<div class="action">
+                                        		<a [routerLink]="['/teamusers/view/'+teamUserData._id]"><img src="assets/images/view.png" alt="img"></a>
+                                        		<a [routerLink]="" (click)="deleteTeamUser(i)"><img src="assets/images/delete.png" alt="img"></a>
+                                        	</div>
+                                        </td>
+                                      </tr>
+                                    </ng-container>
+
+                                    <ng-container *ngIf="!(teamuUsersData && teamuUsersData.result.length)">
+                                      <tr>
+                                        <td colspan="7" class="text-center">No record found!</td>
+                                      </tr>
+                                    </ng-container>
+                                </tbody>
+                            </table>
+                         </div>
+                         <div class="table-show-pagination">
+                          <div class="show-item">
+                              <span>Page {{activePage}} of {{pageCount}}, showing {{currentCount}} records out of {{count}} total</span>
+                            </div>
+                            <ul class="pagination">
+                              <li class="page-item {{!prevPage?'disabled':''}}">
+                                <a [routerLink]="" class="page-link pageprev" (click)="gotoPrevious()">Prev</a>
+                              </li>
+
+                              <li *ngFor="let page of pageArray;let i=index;" class="page-item">
+                                <a [routerLink]="" class="page-link {{activePage==page ? 'active' : ''}}" (click)="gotoPage(i+1)">{{page}}</a>
+                              </li>
+
+                              <li class="page-item {{!nextPage?'disabled':''}}">
+                                <a [routerLink]="" class="page-link pagenext" (click)="gotoNext()">Next</a>
+                              </li>
+                            </ul>
+                         </div>
+                     </div>
+                        
+                </div>
+            </div>
+	      </div>        
+  	</div>
+</div>

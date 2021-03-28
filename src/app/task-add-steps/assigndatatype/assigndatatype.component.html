@@ -1,0 +1,142 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section mvh dashborad-inner uploadpage">
+  	<div class="container">
+	    <div class="dashborad-panel">
+	        <app-businesssidemenu></app-businesssidemenu>
+	        <div class="dashborad-rightsider">
+				<div id="content" *ngIf="taskData">
+
+					<h1>We found {{total_rows}} rows</h1>
+					<p>Aenean ultrices eu lectus in accumsan. Ut tincidunt, arcu non porttitor vestibulum, leo massa venenatis metus, ut dignissim augue turpis vel sapien. Etiam vel pretium massa. Nullam volutpat sit amet lorem nec blandit.</p>
+
+					<h3 class="mt-16 mb-6 opacity-50 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/doesheader/'+task_id]"> <b>1.</b> Does your first row contain headings? </a> </h3>
+					<h3 class="mt-3 mb-6 opacity-75 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/assignheader/'+task_id]"> <b>2.</b> Please assign headings for your import </a> </h3>
+					<h3 class="mt-3 mb-6 commanlsittecxt"> <b>3.</b> Please assign data types to your columns</h3>
+					<div class="w-full relative">
+						<div class="d-sm-flex justify-content-between wizard-table-search">
+							<div class="d-flex align-items-center">
+								<span class="text-gray-600">Show</span>
+								<div class="relative">
+									<select class="border" [(ngModel)]="perPageLimit" (change)="onPageLimitChange($event)">
+										<option value="50">50</option>
+	                                    <option value="100">100</option>
+	                                    <option value="250">250</option>
+	                                    <option value="500">500</option>
+									</select>
+									<div class="arrow align-items-center border">
+										<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+											<path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z">
+										</path>
+										</svg>
+									</div>
+								</div>
+								<span class="ml-3">Entries</span>
+							</div>
+
+							<div class="block relative">
+								<span class="seacrh align-items-center">
+									<svg viewBox="0 0 24 24" class="h-4 w-4 fill-current text-gray-500">
+										<path d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z">
+										</path>
+									</svg> 
+								</span>
+								<input placeholder="Search" [(ngModel)]="searchKeyword" (ngModelChange)="searchByKeyword()">
+							</div>	
+						</div>
+					</div>
+					<form [formGroup]="assignDataTypeForm" (ngSubmit)="saveAssignDataType()" style="padding: 0;">
+						<div class="w-full relative">
+							<div class="table-responsive border border-gray-300 shadow-sm rounded-lg">
+								<table class="shadow-sm table withoitbordrer">
+									<thead *ngIf="taskHeaderStepData && t.controls.length">
+										<tr>
+											<th class="font-medium text-blue-800" *ngFor="let taskHeaderData of taskHeaderStepData.data;let i=index;">
+												{{taskHeaderData.column_name}}
+												<!--  [ngClass]="{ 'is-invalid': submitted && t.controls[i].controls.datatype_name.errors }" -->
+												<div class="" [formGroup]="t.controls[i]">
+													<select class="selectcidcustom" formControlName="datatype_name">
+														<option value="string">Text</option>
+														<option value="integer">Numeric</option>
+														<option value="date">Date</option>
+														<option value="boolean">Yes/No</option>
+													</select>
+												</div>
+												<!-- <div class="edd-root edd-root-has-value" role="widget combobox" aria-haspopup="listbox">
+													<div class="edd-head" data-ref="head">
+														<div class="edd-value" data-ref="value">
+															Text
+														</div>
+
+														<div class="edd-arrow" role="presentation"></div>
+														<select class="edd-select" aria-hidden="true">
+															<option selected="">Text</option>
+															<option>Numeric</option>
+															<option>Date</option>
+															<option>Yes/No</option>
+														</select>
+													</div>
+
+													<div class="edd-body edd-body-at-top" data-ref="body" role="listbox" aria-hidden="">
+														<div class="edd-items-list" data-ref="itemsList">
+															<div class="edd-group" data-ref="group" role="group">
+																<div class="edd-option edd-option-selected" data-ref="option item" role="option" title="Text" aria-selected="true">
+																Text
+																</div>
+
+																<div class="edd-option" data-ref="option item" role="option" title="Numeric">
+																Numeric
+																</div>
+
+																<div class="edd-option" data-ref="option item" role="option" title="Date">
+																Date
+																</div>
+
+																<div class="edd-option" data-ref="option item" role="option" title="Yes/No">
+																Yes/No
+																</div>
+															</div>
+														</div>
+														<div class="edd-gradient-top" role="presentation"></div>
+														<div class="edd-gradient-bottom" role="presentation"></div>
+													</div>
+												</div> -->
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr *ngFor="let result of taskData.task_details.result;let i=index;">
+			                            	<td class="text-gray-600" *ngFor="let total_column of total_columns_array; let j=index" [ngClass]="{'border-1' : j}">{{httpClientService.setDataAccording(result.task_modified_data[total_column])}}</td>
+			                            </tr>
+									</tbody>
+								</table>
+							</div>
+
+							<div class="pagiantiyon d-sm-flex align-items-center justify-content-between">
+									<div class="">
+									<p>Showing {{((perPage*(activePage-1)) + 1)}} to {{((perPage*(activePage-1)) + taskData.task_details.result.length)}} of {{count}} Entries</p>
+								</div>
+
+								<ul class="pagination">
+									<li class="page-item" [ngClass]="{'disabled': !prevPage}"><a class="page-link" [routerLink]="" (click)="gotoPrevious()">Previous</a></li>
+									<li class="page-item" *ngFor="let page of pageArray;let i=index;"><a class="page-link" [ngClass]="{'active': activePage==page}" [routerLink]="" (click)="gotoPage(page)">{{(page)}}</a></li>
+									<li class="page-item" [ngClass]="{'disabled': !nextPage}"><a class="page-link" [routerLink]="" (click)="gotoNext()">Next</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="w-full d-sm-flex mt-16">
+							<button class="bg-blue-800">Allocate Teams</button>
+						</div>
+					</form>
+				</div>
+          	</div>
+	    </div>        
+  	</div>
+</div>

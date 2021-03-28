@@ -1,0 +1,10 @@
+input.is-invalid {
+	border-color: #dc3545;
+}
+
+.dashborad-rightsider .table tr th {
+	vertical-align: top;
+}
+
+.dashborad-rightsider .table tr th input{padding: 5px 10px; font-size: 13px; color:#464a53; border: 1px solid #e5e5e5; width: 95px;}
+

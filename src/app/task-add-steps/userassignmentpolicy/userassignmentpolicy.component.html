@@ -1,0 +1,63 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section mvh dashborad-inner uploadpage">
+  	<div class="container">
+	    <div class="dashborad-panel">
+	        <app-businesssidemenu></app-businesssidemenu>
+	        <div class="dashborad-rightsider">
+	            <div id="content">
+                    <h1>We found {{total_rows}} rows</h1>
+                    <h3 class="mt-16 mb-6 opacity-25 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/uncategorizedresulttoteams/'+task_id]"> <b>11. </b> Would you like to assign the uncategorized results to teams to deal with? </a> </h3>
+                    <h3 class="mt-3 mb-6 opacity-50 bordesr-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/setstartdate/'+task_id]"> <b>12. </b> Set a start date </a> </h3>
+                    <h3 class="mt-3 mb-6 opacity-75 border-b pb-4 commanlsittecxt"> <a [routerLink]="['/tasks/setcompletedate/'+task_id]"> <b>13. </b> Would you like to set a target completion date? </a> </h3>
+                    <h3 class="mt-3 mb-6 commanlsittecxt"> <b>14.</b> User assignment policy </h3>
+                    <p class="mb-5">Please select how you want to allocate records to assigned team members.</p>
+
+                    <form [formGroup]="assignmentPolicyForm" (ngSubmit)="saveAssignmentPolicyType()" style="padding: 0;">
+	                    <div class="mt-12">
+		                    <div class="mdc-form-field">
+		                        <div class="md-radio">
+		                            <input id="weekly" type="radio" value="weekly" formControlName="assign_type">
+		                            <label class="text-gray-600" for="weekly">
+		                            	<span class="inline-block">Weekly - issue an equal amount each week up to the target completion date</span>
+		                            </label>
+		                        </div>
+		                          
+		                      	<div class="md-radio">
+		                            <input id="daily" type="radio" value="daily" formControlName="assign_type">
+		                            <label class="text-gray-600" for="daily">
+		                            	<span class="inline-block">Daily - issue an equal amount daily up to the target completion date</span>
+		                            </label>
+		                     	 </div>
+		                      
+		                        <div class="md-radio">
+		                            <input id="daily_working" type="radio" value="daily_working" formControlName="assign_type"> 
+		                            <label class="text-gray-600" for="daily_working">
+		                            	<span class="inline-block">Daily (working week) - issue an equal amount daily using a working week (Monday to Friday) up to the target completion date</span>
+		                            </label>
+		                      	</div>
+		                      
+		                        <div class="md-radio">
+		                            <input id="immediately" type="radio" value="immediately" formControlName="assign_type">
+		                            <label class="text-gray-600" for="immediately">
+		                            	<span class="inline-block">Immediately - issue all records equally at once</span>
+		                            </label>
+		                     	</div>
+		                    </div>
+	                    </div>
+	                                        
+	                   	<div class="w-full d-sm-flex mt-16">
+	                        <button class="bg-blue-800">Continue</button>
+                    	</div>
+                    </form>
+                </div>
+          	</div>
+	    </div>        
+  	</div>
+</div>

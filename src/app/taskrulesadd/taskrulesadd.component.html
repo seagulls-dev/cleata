@@ -1,0 +1,123 @@
+<!--banner start-->
+<div class="banner-section inner-banner-section">
+  
+  
+</div>
+<!--banner end-->
+
+<!--login page-->
+<div class="inner-section object-comman object-comman-reverse after-login-section">
+  	<div class="container">
+	      <div class="dashborad-panel">
+	        <app-businesssidemenu></app-businesssidemenu>
+
+	         <div class="dashborad-rightsider">
+                <div class="edit-profile-set add-teamuserlist-page">
+                     <div class="list-top-attribute">
+                        <h3> Add rule </h3>
+                        <!-- <div class="rightattributepanel">
+                        	
+                           <a [routerLink]="['/teams']" class="btn blue-custom-btn backbtn"> <i class="fa fa-long-arrow-left"></i> Back </a>
+                        </div> -->
+                     </div>
+                     <div class="viewmanagercontent" *ngIf="taskData">
+                        <form [formGroup]="taskRuleForm" (ngSubmit)="saveTaskRules()">
+                          	<div class="row" *ngFor="let rules_data of t.controls; let r = index">
+                          		<div class="col-lg-12" *ngIf="r"><hr style="margin-top: 2rem;"></div>
+	                          	<div class="col-lg-12 popup-btns text-center align-self-end" *ngIf="(r+1) < t.controls.length">
+	                          		<button type="button" class="submit-btn {{r ? 'cancel' : ''}}" (click)="addRemoveRuleData((r ? 0 : 1), r)">{{r ? 'Remove' : 'Add More'}}</button>
+	                          	</div>
+	                          	<ng-container [formGroup]="rules_data">
+		                          	<div class="col-lg-12">
+		                              <div class="addlableinformation">
+		                                  <label class="custom-label">{{((r+1) < t.controls.length) ? "Teams" : "Teams for tasks which are not assigned"}}</label>
+		                                    <div class="form-group">
+		                                      <ng-select2 formControlName="team_ids" [options]="{multiple: true, placeholder: 'Select team'}" [data]="teamsData" [ngClass]="{ 'is-invalid': submitted && rules_data.controls.team_ids.errors }"></ng-select2>
+		                                      <div *ngIf="submitted && rules_data.controls.team_ids.errors" class="invalid-feedback">
+		                                      	<div *ngIf="rules_data.controls.team_ids.errors.required">Teams is required</div>
+		                                      </div>
+		                                    </div>
+		                                </div>
+		                            </div>
+
+		                            <ng-container *ngIf="(r+1) < t.controls.length">
+		                            	<div class="col-lg-12">
+			                            	<h4><u>Conditions</u></h4>
+			                            	<div class="row" *ngFor="let conditions of c(r).controls; let c = index" [formGroup]="conditions">
+					                          	<div class="col-lg-3">
+					                              	<div class="addlableinformation">
+					                               		<label class="custom-label">Column </label>
+					                                    <div class="form-group">
+					                                    	<select class="form-control without-append-input" formControlName="header_index" [ngClass]="{ 'is-invalid': submitted && conditions.controls.header_index.errors }">
+					                                    		<option value="">Select Column</option>
+					                                    		<option *ngFor="let task_header of taskData.task_header;let i=index;" [value]="i">{{task_header}}</option>
+					                                    	</select>
+					                                    	<div *ngIf="submitted && conditions.controls.header_index.errors" class="invalid-feedback">
+						                                      	<div *ngIf="conditions.controls.header_index.errors.required">Column is required</div>
+						                                    </div>
+					                                    </div>
+					                                </div>
+					                            </div>
+
+					                            <div class="col-lg-3">
+					                              	<div class="addlableinformation">
+					                               		<label class="custom-label">Operator </label>
+					                                    <div class="form-group">
+					                                    	<select class="form-control without-append-input" formControlName="operator" [ngClass]="{ 'is-invalid': submitted && conditions.controls.operator.errors }">
+					                                    		<option value="">Select Operator</option>
+					                                    		<option value="=">=</option>
+					                                    		<option value=">">></option>
+					                                    		<option value="<"><</option>
+					                                    		<option value=">=">>=</option>
+					                                    		<option value="<="><=</option>
+					                                    	</select>
+					                                    	<div *ngIf="submitted && conditions.controls.operator.errors" class="invalid-feedback">
+						                                      	<div *ngIf="conditions.controls.operator.errors.required">Operator is required</div>
+						                                    </div>
+					                                    </div>
+					                                </div>
+					                            </div>
+
+					                            <div class="col-lg-3">
+					                              	<div class="addlableinformation">
+					                               		<label class="custom-label">Value </label>
+					                                    <div class="form-group">
+					                                    	<input type="text" class="form-control without-append-input" placeholder="Enter value" formControlName="condition_value" [ngClass]="{ 'is-invalid': submitted && conditions.controls.condition_value.errors }">
+					                                    	<div *ngIf="submitted && conditions.controls.condition_value.errors" class="invalid-feedback">
+						                                      	<div *ngIf="conditions.controls.condition_value.errors.required">Value is required</div>
+						                                      	<div *ngIf="conditions.controls.condition_value.errors.maxlength">Value should be max {{conditions.controls.condition_value.errors.maxlength.requiredLength}} characters</div>
+						                                    </div>
+					                                    </div>
+					                                </div>
+					                            </div>
+
+					                            <div class="col-lg-3 popup-btns text-center">
+					                            	<button type="button" class="submit-btn {{c ? 'cancel' : ''}}" (click)="addRemoveConditionData(r, (c ? 0 : 1), c)" style="margin-top: 1.7rem;">{{c ? 'Remove' : 'Add More'}}</button>
+					                            	
+					                            </div>
+					                        </div>
+			                            </div>
+		                            </ng-container>
+		                            
+	                            </ng-container>
+	                        </div>
+	                        
+	                        <div class="row">
+	                            <div class="col-sm-12">
+	                                <div class="form-group text-center">
+	                                    <div class="btn submit-btn">
+	                                       <input type="submit" value="Add rule"> 
+	                                       <i class="fa fa-angle-right"></i>
+	                                    </div>
+	                                </div>
+	                            </div>
+                            </div>
+                          	
+                        </form>
+                     </div>
+                        
+                </div>
+            </div>
+	      </div>        
+  	</div>
+</div>
